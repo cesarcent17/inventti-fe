@@ -1,0 +1,13 @@
+<div class="{{baseClass}}__container" >
+  <app-topbar></app-topbar>
+
+  <main class="{{baseClass}}__content">
+    <aside class="{{baseClass}}__sidebar">
+        <p-panelMenu [model]="items"></p-panelMenu>
+    </aside>
+
+    <main class="{{baseClass}}__router-outlet">
+        <router-outlet></router-outlet>
+    </main>
+  </main>
+</div>

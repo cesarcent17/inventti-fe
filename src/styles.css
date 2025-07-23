@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+html, body, app-root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+
+.p-panelmenu-panel {
+  background-color: #011A2D !important;
+  border: none !important;
+  color: white !important;
+}
+
+.p-panelmenu-header-link {
+  color: white !important;
+}
+
+.topbar__menubar {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: #044e86 !important;
+  height: 3.5rem;
+  border-color: #044e86 !important;
+  color: white !important;
+}
+
+.p-menubar-end {
+  margin-left: initial !important;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.p-datatable-table-container {
+  height: 35rem !important;
+  background-color: white !important;
+}
