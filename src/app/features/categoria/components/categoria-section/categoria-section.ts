@@ -19,12 +19,4 @@ import { CategoriaTable } from '../categoria-table/categoria-table';
 })
 export class CategoriaSection {
   baseClass: string = 'categoria-section';
-
- categorias = [
-        {
-            id: 1,
-            nombre: 'Herramientas eléctricas',
-            descripcion: 'Herramientas que funcionan con energía eléctrica',
-            estado: 'ACTIVO',
-        }];
 }

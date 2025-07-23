@@ -6,14 +6,21 @@
         </button>
     </div>
 
+    <app-categoria-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+        (onSave)="guardarCategoria($event)"></app-categoria-crear-modal>
+
+    <app-categoria-editar-modal [(visible)]="mostrarEditarModal" [categoria]="categoriaSeleccionada"
+        (onGuardar)="actualizarListadoCategorias()" (visibleChange)="mostrarEditarModal = $event">
+    </app-categoria-editar-modal>
+
     <p-table class="{{baseClass}}__table" #dt2 [value]="categorias" dataKey="id" [rows]="10"
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">
-       
+
         <ng-template #header>
             <tr>
-                <th style="width:12%">Id</th>
+                <th style="width:7%">Id</th>
                 <th style="width:22%">Nombre</th>
-                <th style="width:22%">Descripción</th>
+                <th style="width:30%">Descripción</th>
                 <th style="width:12%">Estado</th>
                 <th style="width:12%">Acciones</th>
 
@@ -24,7 +31,7 @@
         <ng-template #body let-categoria>
             <tr>
                 <td>
-                    {{ categoria.id }}
+                    {{ categoria.idCategoria }}
                 </td>
                 <td>
                     {{ categoria.nombre }}
@@ -37,8 +44,8 @@
                 </td>
 
                 <td>
-                    <button class="{{baseClass}}__button-edit">✏️</button>
-                    <button class="{{baseClass}}__button-delete">🗑️</button>
+                    <button class="{{baseClass}}__button-edit" (click)="editarCategoria(categoria)">✏️</button>
+                    <button class="{{baseClass}}__button-delete" (click)="eliminarCategoria(categoria)">🗑️</button>
                 </td>
             </tr>
         </ng-template>
