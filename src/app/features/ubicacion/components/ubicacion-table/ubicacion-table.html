@@ -5,12 +5,12 @@
         </button>
     </div>
 
-    <!-- <app-ubicacion-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+    <app-ubicacion-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
         (onSave)="guardarUbicacion($event)"></app-ubicacion-crear-modal>
 
     <app-ubicacion-editar-modal [(visible)]="mostrarEditarModal" [ubicacion]="ubicacionSeleccionada"
         (onGuardar)="actualizarListadoUbicaciones()" (visibleChange)="mostrarEditarModal = $event">
-    </app-ubicacion-editar-modal> -->
+    </app-ubicacion-editar-modal>
 
     <p-table class="{{baseClass}}__table" #dt2 [value]="ubicaciones" dataKey="id" [rows]="10"
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">

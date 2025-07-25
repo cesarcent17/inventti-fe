@@ -1,17 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-ubicacion-table',
-//   imports: [],
-//   templateUrl: './ubicacion-table.html',
-//   styleUrl: './ubicacion-table.css'
-// })
-// export class UbicacionTable {
-
-// }
-
-
-
 import { Component } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
@@ -24,11 +10,14 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { SelectModule } from 'primeng/select';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
+import { UbicacionCrearModal } from '../ubicacion-crear-modal/ubicacion-crear-modal';
+import { UbicacionEditarModal } from '../ubicacion-editar-modal/ubicacion-editar-modal';
+import { UbicacionService } from '../../services/ubicacion-service';
 
 
 @Component({
   selector: 'app-ubicacion-table',
-  imports: [FormsModule, TableModule, TagModule, IconFieldModule, InputTextModule, InputIconModule, MultiSelectModule, SelectModule, HttpClientModule, CommonModule],
+  imports: [FormsModule, TableModule, TagModule, IconFieldModule, InputTextModule, InputIconModule, MultiSelectModule, SelectModule, HttpClientModule, CommonModule, UbicacionCrearModal, UbicacionEditarModal],
   templateUrl: './ubicacion-table.html',
   styleUrl: './ubicacion-table.css'
 })
@@ -44,48 +33,45 @@ export class UbicacionTable {
     descripcion: ''
   };
 
-  // constructor(private categoriaService: CategoriaService) {}
-  constructor() {}
+  constructor(private ubicacionService: UbicacionService) {}
 
 
   ngOnInit(): void {
-    // this.categoriaService.getCategorias().subscribe(data => {
-    //   this.categorias = data;
-    // });
+    this.actualizarListadoUbicaciones();
   }
 
   agregarUbicacion() {
-    // this.mostrarModal = true;
+    this.mostrarModal = true;
     console.log('Agregar ubicación');
   }
 
   guardarUbicacion(data: any) {
-    // this.actualizarListadoUbicaciones();
+    this.actualizarListadoUbicaciones();
   }
 
   editarUbicacion(ubicacion: any) {
-    //  this.ubicacionSeleccionada = { ...ubicacion }; // Clonar para no mutar directamente
-    //  this.mostrarEditarModal = true;
+     this.ubicacionSeleccionada = { ...ubicacion }; // Clonar para no mutar directamente
+     this.mostrarEditarModal = true;
      console.log('Editar ubicación', this.ubicacionSeleccionada);
   }
 
   actualizarListadoUbicaciones() {
-  // this.categoriaService.getCategorias().subscribe(data => {
-  //   this.categorias = data;
-  // });
-}
+    this.ubicacionService.getUbicaciones().subscribe(data => {
+      this.ubicaciones = data;
+    });
+  }
 
   eliminarUbicacion(ubicacion: any) {
-  // if (confirm(`¿Estás seguro de eliminar la ubicación "${ubicacion.nombre}"?`)) {
-  //   this.categoriaService.eliminarCategoria(ubicacion.idUbicacion).subscribe({
-  //     next: () => {
-  //       this.categorias = this.categorias.filter(c => c.idUbicacion !== ubicacion.idUbicacion);
-  //     },
-  //     error: (err) => {
-  //       console.error('Error al eliminar ubicación:', err);
-  //     }
-  //   });
-  // }
-}
+  if (confirm(`¿Estás seguro de eliminar la ubicación "${ubicacion.codigoPercha}"?`)) {
+    this.ubicacionService.eliminarUbicacion(ubicacion.idUbicacion).subscribe({
+      next: () => {
+        this.ubicaciones = this.ubicaciones.filter(c => c.idUbicacion !== ubicacion.idUbicacion);
+      },
+      error: (err) => {
+        console.error('Error al eliminar ubicación:', err);
+      }
+    });
+  }
+  }
 
 }

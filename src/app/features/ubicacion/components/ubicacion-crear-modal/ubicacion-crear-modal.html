@@ -1,1 +1,25 @@
-<p>ubicacion-crear-modal works!</p>
+<p-dialog [(visible)]="visible" [modal]="true" [header]="'Agregar Ubicación'" [closable]="true"
+  [style]="{ width: '400px' }" (onHide)="visibleChange.emit(false)">
+
+  <div class="{{baseClass}}__container">
+
+    <form [formGroup]="formUbicacion" (ngSubmit)="guardar()">
+      <div class="{{baseClass}}__form--column">
+        <div class="{{baseClass}}__field {{baseClass}}__field--nombre field">
+          <label>Código Percha</label>
+          <input pInputText formControlName="codigoPercha" />
+        </div>
+
+        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
+          <label>Descripción</label>
+          <input pInputText formControlName="descripcion" />
+        </div>
+
+        <div class="{{baseClass}}__button">
+          <button pButton type="submit" label="Guardar" [disabled]="formUbicacion.invalid"></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</p-dialog>

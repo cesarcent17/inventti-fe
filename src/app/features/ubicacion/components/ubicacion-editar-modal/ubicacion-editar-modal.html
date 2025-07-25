@@ -1,1 +1,18 @@
-<p>ubicacion-editar-modal works!</p>
+<p-dialog [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Ubicación">
+    <div class="{{baseClass}}__container">
+
+        <div class="{{baseClass}}__field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" [(ngModel)]="ubicacion.codigoPercha" class="p-inputtext" />
+        </div>
+
+        <div class="{{baseClass}}__field">
+            <label for="descripcion">Descripción</label>
+            <input id="descripcion" type="text" [(ngModel)]="ubicacion.descripcion" class="p-inputtext" />
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton label="Cancelar" class="p-button-text" (click)="cerrar()"></button>
+        <button pButton label="Guardar" class="p-button-success" (click)="guardar()"></button>
+    </ng-template>
+</p-dialog>
