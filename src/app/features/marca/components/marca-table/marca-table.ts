@@ -9,6 +9,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { SelectModule } from 'primeng/select';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
+import { MarcaService } from '../../services/marca-service';
 
 
 @Component({
@@ -30,14 +31,13 @@ export class MarcaTable {
     estado: ''
   };
 
-  // constructor(private categoriaService: CategoriaService) {}
-  constructor() {}
+  constructor(private marcaService: MarcaService) {}
 
 
   ngOnInit(): void {
-    // this.categoriaService.getCategorias().subscribe(data => {
-    //   this.categorias = data;
-    // });
+    this.marcaService.getMarcas().subscribe(data => {
+      this.marcas = data;
+    });
   }
 
   agregarMarca() {
