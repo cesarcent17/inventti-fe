@@ -1,53 +1,60 @@
 <p-dialog [(visible)]="visible" [modal]="true" [header]="'Agregar Producto'" [closable]="true"
-  [style]="{ width: '400px' }" (onHide)="visibleChange.emit(false)">
+  [style]="{ width: '450px' }" (onHide)="visibleChange.emit(false)">
 
   <div class="{{baseClass}}__container">
 
     <form [formGroup]="formProducto" (ngSubmit)="guardar()">
       <div class="{{baseClass}}__form--column">
-        <div class="{{baseClass}}__field {{baseClass}}__field--nombre field">
-          <label>Código Producto</label>
-          <input pInputText formControlName="codigo" />
+
+        <div class="{{baseClass}}__field">
+          <label for="codigo">Código Producto</label>
+          <input pInputText id="codigo" formControlName="codigo" />
         </div>
 
-        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
-          <label>Nombre</label>
-          <input pInputText formControlName="nombre" />
+        <div class="{{baseClass}}__field">
+          <label for="nombre">Nombre</label>
+          <input pInputText id="nombre" formControlName="nombre" />
         </div>
-        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
-          <label>Descripcion</label>
-          <input pInputText formControlName="descripcion" />
+
+        <div class="{{baseClass}}__field">
+          <label for="descripcion">Descripción</label>
+          <input pInputText id="descripcion" formControlName="descripcion" />
         </div>
-        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
-          <label>Precio</label>
-          <input type="number" formControlName="precio" />
+
+        <div class="{{baseClass}}__field">
+          <label for="precio">Precio</label>
+          <input pInputText id="precio" type="number" formControlName="precio" />
         </div>
-        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
-          <label>Cantidad Stock</label>
-          <input type="number" formControlName="cantidadStock" />
+
+        <div class="{{baseClass}}__field">
+          <label for="cantidadStock">Cantidad Stock</label>
+          <input pInputText id="cantidadStock" type="number" formControlName="cantidadStock" />
         </div>
-        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
-          <label>ID Marca</label>
-          <input type="number" formControlName="idMarca" />
+
+        <div class="{{baseClass}}__field">
+          <label for="idMarca">ID Marca</label>
+          <input pInputText id="idMarca" type="number" formControlName="idMarca" />
         </div>
-         <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
-          <label>ID Categoría</label>
-          <input type="number" formControlName="idCategoria" />
+
+        <div class="{{baseClass}}__field">
+          <label for="idCategoria">ID Categoría</label>
+          <input pInputText id="idCategoria" type="number" formControlName="idCategoria" />
         </div>
-        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
-          <label>ID Ubicación</label>
-          <input type="number" formControlName="idUbicacion" />
+
+        <div class="{{baseClass}}__field">
+          <label for="idUbicacion">ID Ubicación</label>
+          <input pInputText id="idUbicacion" type="number" formControlName="idUbicacion" />
         </div>
-        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
-          <label>Estado</label>
-          <input pInputText formControlName="estado" />
+
+        <div class="{{baseClass}}__field">
+          <label for="estado">Estado</label>
+          <input pInputText id="estado" formControlName="estado" />
         </div>
 
         <div class="{{baseClass}}__button">
           <button pButton type="submit" label="Guardar" [disabled]="formProducto.invalid"></button>
         </div>
       </div>
-
     </form>
   </div>
 </p-dialog>
