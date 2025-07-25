@@ -1,0 +1,55 @@
+<div class="{{baseClass}}__container">
+    <div class="{{baseClass}}__row {{baseClass}}__row--button">
+        <button class="{{baseClass}}__button" (click)="agregarMarca()">
+            Agregar
+        </button>
+    </div>
+
+    <!-- <app-marca-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+        (onSave)="guardarmarca($event)"></app-marca-crear-modal>
+
+    <app-marca-editar-modal [(visible)]="mostrarEditarModal" [marca]="marcaSeleccionada"
+        (onGuardar)="actualizarListadomarcaes()" (visibleChange)="mostrarEditarModal = $event">
+    </app-marca-editar-modal> -->
+
+    <p-table class="{{baseClass}}__table" #dt2 [value]="marcas" dataKey="id" [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">
+
+        <ng-template #header>
+            <tr>
+                <th style="width:10%">Id</th>
+                <th style="width:25%">Nombre</th>
+                <th style="width:25%">Descripción</th>
+                <th style="width:30%">Estado</th>
+            </tr>
+            <tr>
+            </tr>
+        </ng-template>
+        <ng-template #body let-marca>
+            <tr>
+                <td>
+                    {{ marca.idMarca }}
+                </td>
+                <td>
+                    {{ marca.nombre }}
+                </td>
+                <td>
+                    {{ marca.descripcion }}
+                </td>
+                 <td>
+                    <p-tag [value]="marca.estado" />
+                </td>
+
+                <td>
+                    <button class="{{baseClass}}__button-edit" (click)="editarMarca(marca)">✏️</button>
+                    <button class="{{baseClass}}__button-delete" (click)="eliminarMarca(marca)">🗑️</button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="5">No existen marcas registradas.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

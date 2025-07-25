@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MarcaSection } from './marca-section';
+import { MarcaEditarModal } from './marca-editar-modal';
 
-describe('MarcaSection', () => {
-  let component: MarcaSection;
-  let fixture: ComponentFixture<MarcaSection>;
+describe('MarcaEditarModal', () => {
+  let component: MarcaEditarModal;
+  let fixture: ComponentFixture<MarcaEditarModal>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MarcaSection]
+      imports: [MarcaEditarModal]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MarcaSection);
+    fixture = TestBed.createComponent(MarcaEditarModal);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
