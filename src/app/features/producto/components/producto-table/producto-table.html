@@ -1,1 +1,72 @@
-<p>producto-table works!</p>
+<div class="{{baseClass}}__container">
+    <div class="{{baseClass}}__row {{baseClass}}__row--button">
+        <button class="{{baseClass}}__button" (click)="agregarProducto()">
+            Agregar
+        </button>
+    </div>
+
+    <app-producto-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+        (onSave)="guardarProducto($event)"></app-producto-crear-modal>
+
+    <app-producto-editar-modal [(visible)]="mostrarEditarModal" [producto]="productoSeleccionada"
+        (onGuardar)="actualizarListadoproductoes()" (visibleChange)="mostrarEditarModal = $event">
+    </app-producto-editar-modal>
+
+    <p-table class="{{baseClass}}__table" #dt2 [value]="productos" dataKey="id" [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">
+
+        <ng-template #header>
+            <tr>
+                <th style="width:5%">Id</th>
+                <th style="width:15%">Código</th>
+                <th style="width:20%">Nombre</th>
+                <th style="width:15%">Marca</th>
+                <th style="width:15%">Categoria</th>
+                <th style="width:15%">Ubicación</th>
+                <th style="width:10%">Precio</th>
+                <th style="width:5%">Estado</th>
+            </tr>
+
+            <tr>
+            </tr>
+        </ng-template>
+        <ng-template #body let-producto>
+            <tr>
+                <td>
+                    {{ producto.idProducto }}
+                </td>
+                <td>
+                    {{ producto.codigo }}
+                </td>
+                <td>
+                    {{ producto.nombre }}
+                </td>
+                <td>
+                    {{ producto.marca }}
+                </td>
+                <td>
+                    {{ producto.categoria }}
+                </td>
+                <td>
+                    {{ producto.ubicacion }}
+                </td>
+                <td>
+                    {{ producto.precio }}
+                </td>
+                <td>
+                    {{ producto.estado }}
+                </td>
+
+                <td>
+                    <button class="{{baseClass}}__button-edit" (click)="editarProducto(producto)">✏️</button>
+                    <button class="{{baseClass}}__button-delete" (click)="eliminarProducto(producto)">🗑️</button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="5">No existen productos registradas.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

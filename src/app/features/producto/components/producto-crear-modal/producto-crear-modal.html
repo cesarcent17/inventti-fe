@@ -1,1 +1,53 @@
-<p>producto-crear-modal works!</p>
+<p-dialog [(visible)]="visible" [modal]="true" [header]="'Agregar Producto'" [closable]="true"
+  [style]="{ width: '400px' }" (onHide)="visibleChange.emit(false)">
+
+  <div class="{{baseClass}}__container">
+
+    <form [formGroup]="formProducto" (ngSubmit)="guardar()">
+      <div class="{{baseClass}}__form--column">
+        <div class="{{baseClass}}__field {{baseClass}}__field--nombre field">
+          <label>Código Producto</label>
+          <input pInputText formControlName="codigo" />
+        </div>
+
+        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
+          <label>Nombre</label>
+          <input pInputText formControlName="nombre" />
+        </div>
+        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
+          <label>Descripcion</label>
+          <input pInputText formControlName="descripcion" />
+        </div>
+        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
+          <label>Precio</label>
+          <input type="number" formControlName="precio" />
+        </div>
+        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
+          <label>Cantidad Stock</label>
+          <input type="number" formControlName="cantidadStock" />
+        </div>
+        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
+          <label>ID Marca</label>
+          <input type="number" formControlName="idMarca" />
+        </div>
+         <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
+          <label>ID Categoría</label>
+          <input type="number" formControlName="idCategoria" />
+        </div>
+        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
+          <label>ID Ubicación</label>
+          <input type="number" formControlName="idUbicacion" />
+        </div>
+        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
+          <label>Estado</label>
+          <input pInputText formControlName="estado" />
+        </div>
+
+        <div class="{{baseClass}}__button">
+          <button pButton type="submit" label="Guardar" [disabled]="formProducto.invalid"></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</p-dialog>

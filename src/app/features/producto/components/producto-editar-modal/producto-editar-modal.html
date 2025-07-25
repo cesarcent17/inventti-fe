@@ -1,1 +1,46 @@
-<p>producto-editar-modal works!</p>
+<p-dialog [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Producto">
+    <div class="{{baseClass}}__container">
+
+        <div class="{{baseClass}}__field">
+            <label for="nombre">Código</label>
+            <input id="nombre" type="text" [(ngModel)]="producto.codigo" class="p-inputtext" />
+        </div>
+
+        <div class="{{baseClass}}__field">
+            <label for="descripcion">Nombre</label>
+            <input id="descripcion" type="text" [(ngModel)]="producto.nombre" class="p-inputtext" />
+        </div>
+        <div class="{{baseClass}}__field">
+            <label for="descripcion">Descripción</label>
+            <input id="descripcion" type="text" [(ngModel)]="descripcion" class="p-inputtext" />
+        </div>
+        <div class="{{baseClass}}__field">
+            <label for="descripcion">Precio</label>
+            <input id="descripcion" type="text" [(ngModel)]="producto.precio" class="p-inputtext" />
+        </div>
+        <div class="{{baseClass}}__field">
+            <label for="descripcion">Cantidad</label>
+            <input id="descripcion" type="number" [(ngModel)]="producto.cantidadStock" class="p-inputtext" />
+        </div>
+        <div class="{{baseClass}}__field">
+            <label for="descripcion">ID Marca</label>
+            <input id="descripcion" type="number" [(ngModel)]="producto.idMarca" class="p-inputtext" />
+        </div>
+         <div class="{{baseClass}}__field">
+            <label for="descripcion">ID Categoria</label>
+            <input id="descripcion" type="number" [(ngModel)]="producto.idCategoria" class="p-inputtext" />
+        </div>
+        <div class="{{baseClass}}__field">
+            <label for="descripcion">ID Ubicación</label>
+            <input id="descripcion" type="number" [(ngModel)]="producto.idUbicacion" class="p-inputtext" />
+        </div>
+        <div class="{{baseClass}}__field">
+            <label for="descripcion">Estado</label>
+            <input id="descripcion" type="text" [(ngModel)]="producto.estado" class="p-inputtext" />
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton label="Cancelar" class="p-button-text" (click)="cerrar()"></button>
+        <button pButton label="Guardar" class="p-button-success" (click)="guardar()"></button>
+    </ng-template>
+</p-dialog>
