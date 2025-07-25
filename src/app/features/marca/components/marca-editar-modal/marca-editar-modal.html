@@ -1,1 +1,24 @@
-<p>marca-editar-modal works!</p>
+<p-dialog [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Marca">
+    <div class="{{baseClass}}__container">
+
+        <div class="{{baseClass}}__field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" [(ngModel)]="marca.nombre" class="p-inputtext" />
+        </div>
+
+        <div class="{{baseClass}}__field">
+            <label for="descripcion">Descripción</label>
+            <input id="descripcion" type="text" [(ngModel)]="marca.descripcion" class="p-inputtext" />
+        </div>
+
+        <div class="{{baseClass}}__field {{baseClass}}__field--estado field">
+          <label>Estado</label>
+          <input id="estado" type="text" [(ngModel)]="marca.estado" class="p-inputtext" />
+        </div>
+
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton label="Cancelar" class="p-button-text" (click)="cerrar()"></button>
+        <button pButton label="Guardar" class="p-button-success" (click)="guardar()"></button>
+    </ng-template>
+</p-dialog>

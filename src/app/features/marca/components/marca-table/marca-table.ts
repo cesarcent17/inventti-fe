@@ -10,11 +10,13 @@ import { SelectModule } from 'primeng/select';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { MarcaService } from '../../services/marca-service';
+import { MarcaCrearModal } from '../marca-crear-modal/marca-crear-modal';
+import { MarcaEditarModal } from '../marca-editar-modal/marca-editar-modal';
 
 
 @Component({
   selector: 'app-marca-table',
-  imports: [FormsModule, TableModule, TagModule, IconFieldModule, InputTextModule, InputIconModule, MultiSelectModule, SelectModule, CommonModule],
+  imports: [FormsModule, TableModule, TagModule, IconFieldModule, InputTextModule, InputIconModule, MultiSelectModule, SelectModule, CommonModule, MarcaCrearModal, MarcaEditarModal],
   templateUrl: './marca-table.html',
   styleUrl: './marca-table.css'
 })
@@ -41,37 +43,37 @@ export class MarcaTable {
   }
 
   agregarMarca() {
-    // this.mostrarModal = true;
+    this.mostrarModal = true;
     console.log('Agregar marca');
   }
 
   guardarMarca(data: any) {
-    // this.actualizarListadoMarcas();
+    this.actualizarListadoMarcas();
   }
 
   editarMarca(marca: any) {
-    //  this.marcaSeleccionada = { ...marca }; // Clonar para no mutar directamente
-    //  this.mostrarEditarModal = true;
+     this.marcaSeleccionada = { ...marca };
+     this.mostrarEditarModal = true;
      console.log('Editar marca', this.marcaSeleccionada);
   }
 
   actualizarListadoMarcas() {
-  // this.categoriaService.getCategorias().subscribe(data => {
-  //   this.categorias = data;
-  // });
-}
+    this.marcaService.getMarcas().subscribe(data => {
+      this.marcas = data;
+    });
+  }
 
   eliminarMarca(marca: any) {
-  // if (confirm(`¿Estás seguro de eliminar la marca "${marca.nombre}"?`)) {
-  //   this.categoriaService.eliminarCategoria(marca.idMarca).subscribe({
-  //     next: () => {
-  //       this.categorias = this.categorias.filter(c => c.idUbicacion !== ubicacion.idUbicacion);
-  //     },
-  //     error: (err) => {
-  //       console.error('Error al eliminar ubicación:', err);
-  //     }
-  //   });
-  // }
+  if (confirm(`¿Estás seguro de eliminar la marca "${marca.nombre}"?`)) {
+    this.marcaService.eliminarMarca(marca.idMarca).subscribe({
+      next: () => {
+        this.marcas = this.marcas.filter(c => c.idMarca !== marca.idMarca);
+      },
+      error: (err) => {
+        console.error('Error al eliminar marca:', err);
+      }
+    });
+  }
 }
 
 }

@@ -5,12 +5,12 @@
         </button>
     </div>
 
-    <!-- <app-marca-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
-        (onSave)="guardarmarca($event)"></app-marca-crear-modal>
+    <app-marca-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+        (onSave)="guardarMarca($event)"></app-marca-crear-modal>
 
     <app-marca-editar-modal [(visible)]="mostrarEditarModal" [marca]="marcaSeleccionada"
-        (onGuardar)="actualizarListadomarcaes()" (visibleChange)="mostrarEditarModal = $event">
-    </app-marca-editar-modal> -->
+        (onGuardar)="actualizarListadoMarcas()" (visibleChange)="mostrarEditarModal = $event">
+    </app-marca-editar-modal>
 
     <p-table class="{{baseClass}}__table" #dt2 [value]="marcas" dataKey="id" [rows]="10"
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">
