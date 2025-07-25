@@ -3,10 +3,11 @@ import { ProductoService } from '../../services/producto-service';
 import { ProductoCrearModal } from '../producto-crear-modal/producto-crear-modal';
 import { TableModule } from 'primeng/table';
 import { ProductoEditarModal } from '../producto-editar-modal/producto-editar-modal';
+import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-producto-table',
-  imports: [ProductoCrearModal, TableModule, ProductoEditarModal],
+  imports: [ProductoCrearModal, TableModule, ProductoEditarModal, TagModule],
   templateUrl: './producto-table.html',
   styleUrl: './producto-table.css'
 })
@@ -48,10 +49,10 @@ export class ProductoTable {
   }
 
   eliminarProducto(producto: any) {
-    if (confirm(`¿Estás seguro de eliminar el producto "${producto.codigoPercha}"?`)) {
+    if (confirm(`¿Estás seguro de eliminar el producto "${producto.nombre}"?`)) {
       this.productoService.eliminarProducto(producto.idProducto).subscribe({
         next: () => {
-          this.productos = this.productos.filter(c => c.idproducto !== producto.idproducto);
+          this.productos = this.productos.filter(c => c.idProducto !== producto.idProducto);
         },
         error: (err) => {
           console.error('Error al eliminar el producto:', err);

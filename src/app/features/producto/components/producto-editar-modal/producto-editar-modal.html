@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Producto">
+<p-dialog [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Producto" [style]="{ width: '30rem' }">
     <div class="{{baseClass}}__container">
 
         <div class="{{baseClass}}__field">
@@ -10,13 +10,13 @@
             <label for="descripcion">Nombre</label>
             <input id="descripcion" type="text" [(ngModel)]="producto.nombre" class="p-inputtext" />
         </div>
-        <div class="{{baseClass}}__field">
+        <!-- <div class="{{baseClass}}__field">
             <label for="descripcion">Descripción</label>
             <input id="descripcion" type="text" [(ngModel)]="descripcion" class="p-inputtext" />
-        </div>
+        </div> -->
         <div class="{{baseClass}}__field">
             <label for="descripcion">Precio</label>
-            <input id="descripcion" type="text" [(ngModel)]="producto.precio" class="p-inputtext" />
+            <input id="descripcion" type="number" [(ngModel)]="producto.precio" class="p-inputtext" />
         </div>
         <div class="{{baseClass}}__field">
             <label for="descripcion">Cantidad</label>

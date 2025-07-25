@@ -4,14 +4,17 @@ import { MarcaSection } from './features/marca/components/marca-section/marca-se
 import { ProductoSection } from './features/producto/components/producto-section/producto-section';
 import { CategoriaSection } from './features/categoria/components/categoria-section/categoria-section';
 import { UbicacionSection } from './features/ubicacion/components/ubicacion-section/ubicacion-section';
-// import { MainLayoutComponent } from './layouts/main-layout/main-layout';
-//MarcaSection
 
 export const routes: Routes = [
   {
     path: '',
     component: MainLayout,
     children: [
+      {
+        path: '',
+        redirectTo: 'producto',
+        pathMatch: 'full'
+      },
       {
         path: 'marca',
         component: MarcaSection
@@ -28,36 +31,6 @@ export const routes: Routes = [
         path: 'ubicacion',
         component: UbicacionSection
       }
-
-
-    //   {
-    //     path: 'marca',
-    //     loadChildren: () =>
-    //       import('./features/marca/marca.module').then(m => m.default),
-    //   }
     ]
-    // children: [
-    //   {
-    //     path: 'producto',
-    //     loadChildren: () =>
-    //       import('./features/producto/producto.module').then((m) => m.ProductoModule),
-    //   },
-    //   {
-    //     path: 'marca',
-    //     loadChildren: () =>
-    //       import('./features/marca/marca.module').then((m) => m.MarcaModule),
-    //   },
-    //   {
-    //     path: 'categoria',
-    //     loadChildren: () =>
-    //       import('./features/categoria/categoria.module').then((m) => m.CategoriaModule),
-    //   },
-    //   {
-    //     path: 'ubicacion',
-    //     loadChildren: () =>
-    //       import('./features/ubicacion/ubicacion.module').then((m) => m.UbicacionModule),
-    //   },
-    //   { path: '', redirectTo: 'producto', pathMatch: 'full' },
-    // ],
-  },
+  }
 ];

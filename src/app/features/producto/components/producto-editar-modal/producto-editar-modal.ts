@@ -41,7 +41,7 @@ export class ProductoEditarModal {
       idProducto: this.producto.idProducto,
       codigo: this.producto.codigo,
       nombre: this.producto.nombre,
-      descripcion: this.descripcion,
+      descripcion: '',
       precio: this.producto.precio,
       cantidadStock: this.producto.cantidadStock,
       idMarca: this.producto.idMarca,

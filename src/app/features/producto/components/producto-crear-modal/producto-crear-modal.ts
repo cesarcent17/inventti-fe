@@ -17,7 +17,7 @@ export class ProductoCrearModal {
   // @Input() visible: boolean = false;
   @Output() onClose = new EventEmitter<void>();
   @Output() onSave = new EventEmitter<any>();
-  baseClass: string = 'ubicacion-crear-modal';
+  baseClass: string = 'producto-crear-modal';
 
   @Input() visible: boolean = false;
   @Output() visibleChange = new EventEmitter<boolean>();

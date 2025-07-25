@@ -1,5 +1,5 @@
 <p-dialog [(visible)]="visible" [modal]="true" [header]="'Agregar Producto'" [closable]="true"
-  [style]="{ width: '450px' }" (onHide)="visibleChange.emit(false)">
+  [style]="{ width: '30rem' }" (onHide)="visibleChange.emit(false)">
 
   <div class="{{baseClass}}__container">
 
@@ -7,47 +7,47 @@
       <div class="{{baseClass}}__form--column">
 
         <div class="{{baseClass}}__field">
-          <label for="codigo">Código Producto</label>
+          <label for="codigo" class="{{baseClass}}__label">Código Producto</label>
           <input pInputText id="codigo" formControlName="codigo" />
         </div>
 
         <div class="{{baseClass}}__field">
-          <label for="nombre">Nombre</label>
+          <label for="nombre" class="{{baseClass}}__label">Nombre</label>
           <input pInputText id="nombre" formControlName="nombre" />
         </div>
 
         <div class="{{baseClass}}__field">
-          <label for="descripcion">Descripción</label>
+          <label for="descripcion" class="{{baseClass}}__label">Descripción</label>
           <input pInputText id="descripcion" formControlName="descripcion" />
         </div>
 
         <div class="{{baseClass}}__field">
-          <label for="precio">Precio</label>
+          <label for="precio" class="{{baseClass}}__label">Precio</label>
           <input pInputText id="precio" type="number" formControlName="precio" />
         </div>
 
         <div class="{{baseClass}}__field">
-          <label for="cantidadStock">Cantidad Stock</label>
+          <label for="cantidadStock" class="{{baseClass}}__label">Cantidad Stock</label>
           <input pInputText id="cantidadStock" type="number" formControlName="cantidadStock" />
         </div>
 
         <div class="{{baseClass}}__field">
-          <label for="idMarca">ID Marca</label>
+          <label for="idMarca" class="{{baseClass}}__label">ID Marca</label>
           <input pInputText id="idMarca" type="number" formControlName="idMarca" />
         </div>
 
         <div class="{{baseClass}}__field">
-          <label for="idCategoria">ID Categoría</label>
+          <label for="idCategoria" class="{{baseClass}}__label">ID Categoría</label>
           <input pInputText id="idCategoria" type="number" formControlName="idCategoria" />
         </div>
 
         <div class="{{baseClass}}__field">
-          <label for="idUbicacion">ID Ubicación</label>
+          <label for="idUbicacion" class="{{baseClass}}__label">ID Ubicación</label>
           <input pInputText id="idUbicacion" type="number" formControlName="idUbicacion" />
         </div>
 
         <div class="{{baseClass}}__field">
-          <label for="estado">Estado</label>
+          <label for="estado" class="{{baseClass}}__label">Estado</label>
           <input pInputText id="estado" formControlName="estado" />
         </div>
 

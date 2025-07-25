@@ -39,3 +39,8 @@ body {
   height: 35rem !important;
   background-color: white !important;
 }
+
+.p-panelmenu-item-link-active {
+  background-color: #044e86 !important;
+  color: white !important;
+}
