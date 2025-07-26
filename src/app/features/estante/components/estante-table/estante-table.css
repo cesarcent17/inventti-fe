@@ -1,0 +1,67 @@
+.estante-table__container {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.estante-table__button {
+  width: 5rem;
+  font-size: 0.9rem;
+  background-color: #0d47a1;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.estante-table__button:hover {
+  background-color: #1565c0;
+}
+
+.estante-table__row--button {
+  display: flex;
+  justify-content: end;
+  padding: 0.5rem;
+}
+
+.p-datatable-table-container {
+  height: 35rem !important;
+  background-color: white !important;
+}
+
+.estante-table__table {
+  height: 35rem !important;
+}
+
+.estante-table__button-edit {
+  background-color: #fff3cd; /* Amarillo claro */
+  border: 1px solid #ffeeba;
+  color: #856404;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.estante-table__button-edit:hover {
+  background-color: #ffe8a1;
+}
+
+.estante-table__button-delete {
+  background-color: #f8d7da; /* Rojo claro */
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.estante-table__button-delete:hover {
+  background-color: #f1aeb5;
+}

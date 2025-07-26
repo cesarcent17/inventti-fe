@@ -1,1 +1,57 @@
-<p>estante-table works!</p>
+<div class="{{baseClass}}__container">
+    <div class="{{baseClass}}__row {{baseClass}}__row--button">
+        <button class="{{baseClass}}__button" (click)="agregarEstante()">
+            Agregar
+        </button>
+    </div>
+
+    <!-- <app-estante-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+        (onSave)="guardarestante($event)"></app-estante-crear-modal>
+
+    <app-estante-editar-modal [(visible)]="mostrarEditarModal" [estante]="estanteSeleccionada"
+        (onGuardar)="actualizarListadoestantees()" (visibleChange)="mostrarEditarModal = $event">
+    </app-estante-editar-modal> -->
+
+    <p-table class="{{baseClass}}__table" #dt2 [value]="estante" dataKey="id" [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">
+
+        <ng-template #header>
+            <tr>
+                <th style="width:9%">Id</th>
+                <th style="width:18%">Código</th>
+                <th style="width:27%">Nombre</th>
+                <th style="width:27%">Descripción</th>
+                <th style="width:18%">Acciones</th>
+            </tr>
+
+
+            <tr>
+            </tr>
+        </ng-template>
+        <ng-template #body let-estante>
+            <tr>
+                <td>
+                    {{ estante.idEstante }}
+                </td>
+                <td>
+                    {{ estante.codigo }}
+                </td>
+                <td>
+                    {{ estante.nombre }}
+                </td>
+                <td>
+                    {{ estante.descripcion }}
+                </td>
+                <td>
+                    <button class="{{baseClass}}__button-edit" (click)="editarEstante(estante)">✏️</button>
+                    <button class="{{baseClass}}__button-delete" (click)="eliminarEstante(estante)">🗑️</button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="6">No existen Estantes registrados.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
