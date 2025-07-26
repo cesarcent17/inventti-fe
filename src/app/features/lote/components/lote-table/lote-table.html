@@ -1,1 +1,56 @@
-<p>lote-table works!</p>
+<div class="{{baseClass}}__container">
+    <div class="{{baseClass}}__row {{baseClass}}__row--button">
+        <button class="{{baseClass}}__button" (click)="agregarLote()">
+            Agregar
+        </button>
+    </div>
+
+    <!-- <app-lote-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+        (onSave)="guardarlote($event)"></app-lote-crear-modal>
+
+    <app-lote-editar-modal [(visible)]="mostrarEditarModal" [lote]="loteSeleccionada"
+        (onGuardar)="actualizarListadolotees()" (visibleChange)="mostrarEditarModal = $event">
+    </app-lote-editar-modal> -->
+
+    <p-table class="{{baseClass}}__table" #dt2 [value]="lotes" dataKey="id" [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">
+
+        <ng-template #header>
+            <tr>
+                <th style="width:10%">Id</th>
+                <th style="width:20%">Código</th>
+                <th style="width:30%">Descripción</th>
+                <th style="width:25%">Producto</th>
+                <th style="width:15%">Acciones</th>
+            </tr>
+
+            <tr>
+            </tr>
+        </ng-template>
+        <ng-template #body let-lote>
+            <tr>
+                <td>
+                    {{ lote.idLote }}
+                </td>
+                <td>
+                    {{ lote.codigo }}
+                </td>
+                <td>
+                    {{ lote.descripcion }}
+                </td>
+                <td>
+                    {{ lote.producto?.nombre }}
+                </td>
+                <td>
+                    <button class="{{baseClass}}__button-edit" (click)="editarLote(lote)">✏️</button>
+                    <button class="{{baseClass}}__button-delete" (click)="eliminarLote(lote)">🗑️</button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="5">No existen lotes registradas.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
