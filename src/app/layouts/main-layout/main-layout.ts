@@ -14,6 +14,16 @@ export class MainLayout {
   baseClass: string = 'main-layout';
   items: any[] = [
     {
+      label: 'Lote',
+      icon: 'pi pi-box',
+      routerLink: '/lote',
+    },
+    {
+      label: 'Stock',
+      icon: 'pi pi-box',
+      routerLink: '/stock',
+    },
+    {
       label: 'Producto',
       icon: 'pi pi-box',
       routerLink: '/producto',

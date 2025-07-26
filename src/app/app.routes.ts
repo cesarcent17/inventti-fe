@@ -16,6 +16,14 @@ export const routes: Routes = [
         pathMatch: 'full'
       },
       {
+        path: 'lote',
+        component: MarcaSection
+      },
+      {
+        path: 'stock',
+        component: MarcaSection
+      },
+      {
         path: 'marca',
         component: MarcaSection
       },
