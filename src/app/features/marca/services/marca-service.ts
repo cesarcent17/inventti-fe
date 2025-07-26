@@ -1,28 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/enviroment';
+
+const MARCA_URL: string = `${environment.urlBase}Marcas`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarcaService {
-  private apiUrl = 'https://localhost:7197/api/Marca';
 
   constructor(private http: HttpClient) {}
 
-  getMarcas(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/GetMarcas`);
+  getMarcas(): Observable<any> {
+    return this.http.get<any>(`${MARCA_URL}/GetMarcas`);
   }
 
   crearMarca(marca: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/CrearMarca`, marca);
+    return this.http.post(`${MARCA_URL}/CrearMarca`, marca);
   }
 
   actualizarMarca(marca: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/ActualizarMarca`, marca);
+    return this.http.put(`${MARCA_URL}/ActualizarMarca`, marca);
   }
 
   eliminarMarca(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/EliminarMarca/${id}`);
+    return this.http.delete(`${MARCA_URL}/EliminarMarca/${id}`);
   }
 }

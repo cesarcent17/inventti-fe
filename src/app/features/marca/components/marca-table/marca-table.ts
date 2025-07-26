@@ -38,7 +38,7 @@ export class MarcaTable {
 
   ngOnInit(): void {
     this.marcaService.getMarcas().subscribe(data => {
-      this.marcas = data;
+      this.marcas = data?.data;
     });
   }
 

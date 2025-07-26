@@ -57,7 +57,7 @@ export class UbicacionTable {
 
   actualizarListadoUbicaciones() {
     this.ubicacionService.getUbicaciones().subscribe(data => {
-      this.ubicaciones = data;
+      this.ubicaciones = data.data;
     });
   }
 

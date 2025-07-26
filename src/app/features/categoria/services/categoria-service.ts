@@ -1,28 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/enviroment';
+
+const CATEGORIA_URL: string = `${environment.urlBase}Categoria`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriaService {
-   private apiUrl = 'https://localhost:7197/api/Categoria';
 
   constructor(private http: HttpClient) {}
 
-  getCategorias(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/GetCategorias`);
-  }
-  
-   crearCategoria(categoria: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/CrearCategoria`, categoria);
+  getCategorias(): Observable<any> {
+    return this.http.get<any>(`${CATEGORIA_URL}/GetCategorias`);
   }
 
-  eliminarCategoria(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/EliminarCategoria/${id}`);
+  crearCategoria(categoria: any): Observable<any> {
+    return this.http.post(`${CATEGORIA_URL}/CrearCategoria`, categoria);
   }
 
   actualizarCategoria(categoria: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/ActualizarCategoria`, categoria);
+    return this.http.put(`${CATEGORIA_URL}/ActualizarCategoria`, categoria);
+  }
+
+  eliminarCategoria(id: number): Observable<any> {
+    return this.http.delete(`${CATEGORIA_URL}/EliminarCategoria/${id}`);
   }
 }

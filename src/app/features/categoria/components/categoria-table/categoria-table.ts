@@ -37,7 +37,7 @@ export class CategoriaTable {
 
   ngOnInit(): void {
     this.categoriaService.getCategorias().subscribe(data => {
-      this.categorias = data;
+      this.categorias = data.data;
     });
   }
     

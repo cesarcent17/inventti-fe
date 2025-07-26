@@ -18,10 +18,13 @@
         <ng-template #header>
             <tr>
                 <th style="width:10%">Id</th>
-                <th style="width:25%">Código Percha</th>
-                <th style="width:40%">Descripción</th>
-                <th style="width:25%">Acciones</th>
+                <th style="width:20%">Código Percha</th>
+                <th style="width:25%">Descripción</th>
+                <th style="width:15%">Pasillo</th>
+                <th style="width:15%">Estante</th>
+                <th style="width:15%">Acciones</th>
             </tr>
+
 
 
             <tr>
@@ -37,6 +40,12 @@
                 </td>
                 <td>
                     {{ ubicacion.descripcion }}
+                </td>
+                <td>
+                    {{ ubicacion.estante?.nombre }}
+                </td>
+                <td>
+                    {{ ubicacion.pasillo?.nombre }}
                 </td>
 
                 <td>
