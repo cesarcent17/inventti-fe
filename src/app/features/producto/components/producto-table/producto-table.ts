@@ -43,7 +43,7 @@ export class ProductoTable {
 
   actualizarListadoproductoes() {
     this.productoService.getProductos().subscribe(data => {
-      this.productos = data;
+      this.productos = data.data;
       console.log('Productos actualizados:', this.productos);
     });
   }

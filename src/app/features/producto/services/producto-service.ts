@@ -1,32 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/enviroment';
+
+const PRODUCTO_URL: string = `${environment.urlBase}Producto`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
-  private apiUrl = 'https://localhost:7197/api/Producto';
 
   constructor(private http: HttpClient) {}
 
-  // Obtener todos los productos
-  getProductos(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/obtenerProductos`);
+  getProductos(): Observable<any> {
+    return this.http.get<any>(`${PRODUCTO_URL}/ObtenerProductos`);
   }
 
-  // Crear un producto
   crearProducto(producto: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/CrearProducto`, producto);
+    return this.http.post(`${PRODUCTO_URL}/CrearProducto`, producto);
   }
 
-  // Actualizar un producto
   actualizarProducto(producto: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/ActualizarProducto`, producto);
+    return this.http.put(`${PRODUCTO_URL}/ActualizarProducto`, producto);
   }
 
-  // Eliminar un producto por ID
   eliminarProducto(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/EliminarProducto/${id}` );
+    return this.http.delete(`${PRODUCTO_URL}/EliminarProducto/${id}`);
   }
 }
