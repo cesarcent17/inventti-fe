@@ -1,1 +1,54 @@
-<p>unidad-medida-table works!</p>
+<div class="{{baseClass}}__container">
+    <div class="{{baseClass}}__row {{baseClass}}__row--button">
+        <button class="{{baseClass}}__button" (click)="agregarUnidadMedida()">
+            Agregar
+        </button>
+    </div>
+
+    <!-- <app-stock-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+        (onSave)="guardarstock($event)"></app-stock-crear-modal>
+
+    <app-stock-editar-modal [(visible)]="mostrarEditarModal" [stock]="stockSeleccionada"
+        (onGuardar)="actualizarListadostockes()" (visibleChange)="mostrarEditarModal = $event">
+    </app-stock-editar-modal> -->
+
+    <p-table class="{{baseClass}}__table" #dt2 [value]="unidadesMedida" dataKey="id" [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">
+
+        <ng-template #header>
+            <tr>
+                <th style="width:15%">Id</th>
+                <th style="width:40%">Nombre</th>
+                <th style="width:25%">Simbolo</th>
+                <th style="width:20%">Acciones</th>
+            </tr>
+
+
+            <tr>
+            </tr>
+        </ng-template>
+        <ng-template #body let-unidadMedida>
+            <tr>
+                <td>
+                    {{ unidadMedida.idUnidadMedida }}
+                </td>
+                <td>
+                    {{ unidadMedida.nombre }}
+                </td>
+                <td>
+                    {{ unidadMedida.simbolo }}
+                </td>
+                <td>
+                    <button class="{{baseClass}}__button-edit" (click)="editarUnidadMedida(unidadMedida)">✏️</button>
+                    <button class="{{baseClass}}__button-delete"
+                        (click)="eliminarUnidadMedida(unidadMedida)">🗑️</button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="4">No existen Unidades de Medida registradas.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
