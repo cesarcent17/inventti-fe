@@ -28,6 +28,11 @@ export class MainLayout {
       icon: 'pi pi-box',
       routerLink: '/producto',
     },
+     {
+      label: 'Unidad de Medida',
+      icon: 'pi pi-box',
+      routerLink: '/unidad-medida',
+    },
     {
       label: 'Marca',
       icon: 'pi pi-tag',
@@ -42,6 +47,16 @@ export class MainLayout {
       label: 'Ubicación',
       icon: 'pi pi-map-marker',
       routerLink: '/ubicacion',
+    },
+    {
+      label: 'Pasillo',
+      icon: 'pi pi-map-marker',
+      routerLink: '/pasillo',
+    },
+    {
+      label: 'Estante',
+      icon: 'pi pi-map-marker',
+      routerLink: '/estante',
     },
   ];
 

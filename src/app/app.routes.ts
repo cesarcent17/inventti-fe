@@ -4,6 +4,11 @@ import { MarcaSection } from './features/marca/components/marca-section/marca-se
 import { ProductoSection } from './features/producto/components/producto-section/producto-section';
 import { CategoriaSection } from './features/categoria/components/categoria-section/categoria-section';
 import { UbicacionSection } from './features/ubicacion/components/ubicacion-section/ubicacion-section';
+import { LoteSection } from './features/lote/components/lote-section/lote-section';
+import { StockSection } from './features/stock/components/stock-section/stock-section';
+import { UnidadMedidaSection } from './features/unidad-medida/components/unidad-medida-section/unidad-medida-section';
+import { EstanteSection } from './features/estante/components/estante-section/estante-section';
+import { PasilloSection } from './features/pasillo/components/pasillo-section/pasillo-section';
 
 export const routes: Routes = [
   {
@@ -17,11 +22,23 @@ export const routes: Routes = [
       },
       {
         path: 'lote',
-        component: MarcaSection
+        component: LoteSection
       },
       {
         path: 'stock',
-        component: MarcaSection
+        component: StockSection
+      },
+      {
+        path: 'unidad-medida',
+        component: UnidadMedidaSection
+      },
+      {
+        path: 'estante',
+        component: EstanteSection
+      },
+      {
+        path: 'pasillo',
+        component: PasilloSection
       },
       {
         path: 'marca',
