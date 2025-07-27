@@ -20,8 +20,7 @@ export class MarcaEditarModal {
 
   editableMarca: any = {
     nombre: '',
-    descripcion: '',
-    estado: ''
+    descripcion: ''
   };
 
     baseClass: string = 'marca-editar-modal';

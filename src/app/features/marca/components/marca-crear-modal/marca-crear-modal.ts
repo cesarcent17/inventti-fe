@@ -30,14 +30,15 @@ export class MarcaCrearModal {
 
     this.formMarca   = this.fb.group({
       nombre: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      estado: ['', Validators.required]
+      descripcion: ['', Validators.required]
     });
   }
 
   guardar() {
+    console.log('Guardando marca', this.formMarca.value);
     if (this.formMarca.valid) {
       const nuevaMarca: any = this.formMarca.value;
+      
 
       this.marcaService.crearMarca(nuevaMarca).subscribe({
         next: (response) => {
@@ -46,7 +47,7 @@ export class MarcaCrearModal {
           this.formMarca.reset();
         },
         error: (err) => {
-          console.error('Error al crear categoría:', err);
+          console.error('Error al crear marca:', err);
         }
       });
     }

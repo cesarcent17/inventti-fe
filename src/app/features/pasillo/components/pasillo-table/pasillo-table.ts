@@ -7,8 +7,9 @@ import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-pasillo-table',
-  imports: [PasilloCrearModal, TableModule, PasilloEditarModal, TagModule],
+  imports: [PasilloCrearModal, TableModule, PasilloEditarModal, TagModule, PasilloCrearModal, PasilloEditarModal],
   templateUrl: './pasillo-table.html',
+  standalone: true,
   styleUrl: './pasillo-table.css'
 })
 export class PasilloTable {
@@ -49,10 +50,11 @@ export class PasilloTable {
   }
 
   eliminarPasillo(pasillo: any) {
+    console.log('Eliminar pasillo', pasillo);
     if (confirm(`¿Estás seguro de eliminar el pasillo "${pasillo.nombre}"?`)) {
-      this.pasilloService.eliminarPasillo(pasillo.idpasillo).subscribe({
+      this.pasilloService.eliminarPasillo(pasillo.idPasillo).subscribe({
         next: () => {
-          this.pasillo = this.pasillo.filter(c => c.idpasillo !== pasillo.idpasillo);
+          this.pasillo = this.pasillo.filter(c => c.idPasillo !== pasillo.idPasillo);
         },
         error: (err) => {
           console.error('Error al eliminar el pasillo:', err);

@@ -13,7 +13,7 @@ export class UnidadMedidaService {
   constructor(private http: HttpClient) {}
 
   getUnidadesMedida(): Observable<any> {
-    return this.http.get<any>(`${UNIDAD_MEDIDA_URL}/GetUnidadesMedida`);
+    return this.http.get<any>(`${UNIDAD_MEDIDA_URL}/GetUnidadMedida`);
   }
 
   crearUnidadMedida(unidad: any): Observable<any> {

@@ -8,3 +8,15 @@
   flex-direction: column;
   margin-bottom: 1rem;
 }
+
+.marca-crear-modal__field--estado {
+  margin-bottom: 1rem;
+}
+
+.marca-crear-modal__field--estado select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+

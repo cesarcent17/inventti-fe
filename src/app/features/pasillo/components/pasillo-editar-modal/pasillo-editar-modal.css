@@ -1,0 +1,14 @@
+.pasillo-editar-modal__form--column {
+  display: flex;
+  flex-direction: column;
+}
+
+.pasillo-editar-modal__field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+p-dialog {
+  width: 35rem !important;
+}

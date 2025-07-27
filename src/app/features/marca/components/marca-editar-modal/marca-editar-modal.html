@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Marca">
+<p-dialog [style]="{ width: '400px' }" [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Marca">
     <div class="{{baseClass}}__container">
 
         <div class="{{baseClass}}__field">
@@ -11,10 +11,6 @@
             <input id="descripcion" type="text" [(ngModel)]="marca.descripcion" class="p-inputtext" />
         </div>
 
-        <div class="{{baseClass}}__field {{baseClass}}__field--estado field">
-          <label>Estado</label>
-          <input id="estado" type="text" [(ngModel)]="marca.estado" class="p-inputtext" />
-        </div>
 
     </div>
     <ng-template pTemplate="footer">

@@ -59,7 +59,7 @@ export class MarcaTable {
 
   actualizarListadoMarcas() {
     this.marcaService.getMarcas().subscribe(data => {
-      this.marcas = data;
+      this.marcas = data.data;
     });
   }
 

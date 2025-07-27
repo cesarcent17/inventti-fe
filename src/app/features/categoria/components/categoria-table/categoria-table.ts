@@ -58,7 +58,7 @@ export class CategoriaTable {
 
   actualizarListadoCategorias() {
   this.categoriaService.getCategorias().subscribe(data => {
-    this.categorias = data;
+    this.categorias = data.data;
   });
 }
 

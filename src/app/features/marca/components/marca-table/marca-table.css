@@ -65,3 +65,15 @@
 .marca-table__button-delete:hover {
   background-color: #f1aeb5;
 }
+
+
+
+.p-tag-success {
+  background-color: #DCFCE7 !important;
+  color: #15803d !important;
+}
+
+.p-tag-danger {
+  background-color: #FEE2E2 !important;
+  color: #9B1C31 !important;
+}

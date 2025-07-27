@@ -16,10 +16,18 @@
           <input pInputText formControlName="descripcion" />
         </div>
 
-        <div class="{{baseClass}}__field {{baseClass}}__field--estado field">
+        <!-- <div class="{{baseClass}}__field {{baseClass}}__field--estado field">
           <label>Estado</label>
           <input pInputText formControlName="estado" />
-        </div>
+        </div> -->
+
+         <!-- <div class="{{baseClass}}__field {{baseClass}}__field--estado field">
+          <label>Estado</label>
+          <select formControlName="estado" class="p-inputtext">
+            <option value="ACTIVO">ACTIVO</option>
+            <option value="INACTIVO">INACTIVO</option>
+          </select>
+        </div> -->
 
         <div class="{{baseClass}}__button">
           <button pButton type="submit" label="Guardar" [disabled]="formMarca.invalid"></button>

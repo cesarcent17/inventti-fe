@@ -5,12 +5,12 @@
         </button>
     </div>
 
-    <!-- <app-pasillo-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
-        (onSave)="guardarpasillo($event)"></app-pasillo-crear-modal>
+    <app-pasillo-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+         (onSave)="guardarPasillo($event)"></app-pasillo-crear-modal>
 
     <app-pasillo-editar-modal [(visible)]="mostrarEditarModal" [pasillo]="pasilloSeleccionada"
-        (onGuardar)="actualizarListadopasilloes()" (visibleChange)="mostrarEditarModal = $event">
-    </app-pasillo-editar-modal> -->
+        (onGuardar)="actualizarListadopasillos()" (visibleChange)="mostrarEditarModal = $event">
+    </app-pasillo-editar-modal>
 
     <p-table class="{{baseClass}}__table" #dt2 [value]="pasillo" dataKey="id" [rows]="10"
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">
@@ -31,7 +31,7 @@
         <ng-template #body let-pasillo>
             <tr>
                 <td>
-                    {{ pasillo.idpasillo }}
+                    {{ pasillo.idPasillo }}
                 </td>
                 <td>
                     {{ pasillo.codigo }}

@@ -1,1 +1,25 @@
-<p>pasillo-crear-modal works!</p>
+<p-dialog [(visible)]="visible" [modal]="true" [header]="'Agregar Pasillo'" [closable]="true"
+  [style]="{ width: '400px' }" (onHide)="visibleChange.emit(false)">
+
+  <div class="{{baseClass}}__container">
+
+    <form [formGroup]="formPasillo" (ngSubmit)="guardar()">
+      <div class="{{baseClass}}__form--column">
+        <div class="{{baseClass}}__field {{baseClass}}__field--nombre field">
+          <label>Nombre</label>
+          <input pInputText formControlName="nombre" />
+        </div>
+
+        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
+          <label>Descripción</label>
+          <input pInputText formControlName="descripcion" />
+        </div>
+
+        <div class="{{baseClass}}__button">
+          <button pButton type="submit" label="Guardar" [disabled]="formPasillo.invalid"></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</p-dialog>

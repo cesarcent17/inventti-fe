@@ -1,1 +1,25 @@
-<p>unidad-medida-editar-modal works!</p>
+<p-dialog [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Unidad de Medida"
+    [style]="{ width: '400px' }" [baseZIndex]="10000">
+    <div class="{{baseClass}}__container">
+
+        <div class="{{baseClass}}__field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" [(ngModel)]="editableUnidadMedida.nombre" class="p-inputtext" />
+        </div>
+
+        <div class="{{baseClass}}__field {{baseClass}}__field--simbolo field">
+            <label>Simbolo</label>
+            <input id="simbolo" type="text" [(ngModel)]="editableUnidadMedida.simbolo" class="p-inputtext" />
+        </div>
+
+        <div class="{{baseClass}}__field">
+            <label for="descripcion">Descripción</label>
+            <input id="descripcion" type="text" [(ngModel)]="editableUnidadMedida.descripcion" class="p-inputtext" />
+        </div>
+
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton label="Cancelar" class="p-button-text" (click)="cerrar()"></button>
+        <button pButton label="Guardar" class="p-button-success" (click)="guardar()"></button>
+    </ng-template>
+</p-dialog>

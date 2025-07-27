@@ -6,7 +6,7 @@
     </div>
 
     <app-marca-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
-        (onSave)="guardarMarca($event)"></app-marca-crear-modal>
+        (onGuardar)="actualizarListadoMarcas()" (onSave)="guardarMarca($event)"></app-marca-crear-modal>
 
     <app-marca-editar-modal [(visible)]="mostrarEditarModal" [marca]="marcaSeleccionada"
         (onGuardar)="actualizarListadoMarcas()" (visibleChange)="mostrarEditarModal = $event">
@@ -19,8 +19,7 @@
             <tr>
                 <th style="width:10%">Id</th>
                 <th style="width:20%">Nombre</th>
-                <th style="width:30%">Descripción</th>
-                <th style="width:20%">Estado</th>
+                <th style="width:50%">Descripción</th>
                 <th style="width:20%">Acciones</th>
             </tr>
             <tr>
@@ -37,9 +36,12 @@
                 <td>
                     {{ marca.descripcion }}
                 </td>
-                <td>
+                <!-- <td>
                     <p-tag [value]="marca.estado" />
-                </td>
+                </td> -->
+                <!-- <td>
+                    <p-tag [value]="marca.estado" [severity]="marca.estado === 'ACTIVO' ? 'success' : 'danger'"></p-tag>
+                </td> -->
 
                 <td>
                     <button class="{{baseClass}}__button-edit" (click)="editarMarca(marca)">✏️</button>

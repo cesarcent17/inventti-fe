@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/enviroment';
 
-const MARCA_URL: string = `${environment.urlBase}Marcas`;
+const MARCA_URL: string = `${environment.urlBase}Marca`;
 
 @Injectable({
   providedIn: 'root'

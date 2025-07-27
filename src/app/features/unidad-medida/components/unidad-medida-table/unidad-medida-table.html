@@ -5,12 +5,12 @@
         </button>
     </div>
 
-    <!-- <app-stock-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
-        (onSave)="guardarstock($event)"></app-stock-crear-modal>
+     <app-unidad-medida-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+        (onSave)="guardarUnidadMedida($event)"></app-unidad-medida-crear-modal>
 
-    <app-stock-editar-modal [(visible)]="mostrarEditarModal" [stock]="stockSeleccionada"
-        (onGuardar)="actualizarListadostockes()" (visibleChange)="mostrarEditarModal = $event">
-    </app-stock-editar-modal> -->
+    <app-unidad-medida-editar-modal [(visible)]="mostrarEditarModal" [unidadMedida]="unidadMedidaSeleccionada"
+        (onGuardar)="actualizarListadounidadMedidas()" (visibleChange)="mostrarEditarModal = $event">
+    </app-unidad-medida-editar-modal>
 
     <p-table class="{{baseClass}}__table" #dt2 [value]="unidadesMedida" dataKey="id" [rows]="10"
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">
@@ -18,11 +18,11 @@
         <ng-template #header>
             <tr>
                 <th style="width:15%">Id</th>
-                <th style="width:40%">Nombre</th>
-                <th style="width:25%">Simbolo</th>
-                <th style="width:20%">Acciones</th>
+                <th style="width:20%">Nombre</th>
+                <th style="width:20%">Simbolo</th>
+                <th style="width:35%">Descripcion</th>
+                <th style="width:10%">Acciones</th>
             </tr>
-
 
             <tr>
             </tr>
@@ -37,6 +37,9 @@
                 </td>
                 <td>
                     {{ unidadMedida.simbolo }}
+                </td>
+                <td>
+                    {{ unidadMedida.descripcion }}
                 </td>
                 <td>
                     <button class="{{baseClass}}__button-edit" (click)="editarUnidadMedida(unidadMedida)">✏️</button>

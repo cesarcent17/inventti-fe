@@ -13,7 +13,7 @@ export class PasilloService {
   constructor(private http: HttpClient) {}
 
   getPasillos(): Observable<any> {
-    return this.http.get<any>(`${PASILLO_URL}/GetPasillos`);
+    return this.http.get<any>(`${PASILLO_URL}/GetPasillo`);
   }
 
   crearPasillo(pasillo: any): Observable<any> {

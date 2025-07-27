@@ -7,7 +7,7 @@
     </div>
 
     <app-categoria-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
-        (onSave)="guardarCategoria($event)"></app-categoria-crear-modal>
+        (onGuardar)="actualizarListadoCategorias()" (onSave)="guardarCategoria($event)"></app-categoria-crear-modal>
 
     <app-categoria-editar-modal [(visible)]="mostrarEditarModal" [categoria]="categoriaSeleccionada"
         (onGuardar)="actualizarListadoCategorias()" (visibleChange)="mostrarEditarModal = $event">
@@ -17,14 +17,14 @@
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">
 
         <ng-template #header>
-            <tr>
-                <th style="width:7%">Id</th>
-                <th style="width:22%">Nombre</th>
-                <th style="width:30%">Descripción</th>
-                <th style="width:12%">Estado</th>
-                <th style="width:12%">Acciones</th>
 
+             <tr>
+                <th style="width:10%">Id</th>
+                <th style="width:20%">Nombre</th>
+                <th style="width:50%">Descripción</th>
+                <th style="width:20%">Acciones</th>
             </tr>
+
             <tr>
             </tr>
         </ng-template>
@@ -38,9 +38,6 @@
                 </td>
                 <td>
                     {{ categoria.descripcion }}
-                </td>
-                <td>
-                    <p-tag [value]="categoria.estado" />
                 </td>
 
                 <td>
