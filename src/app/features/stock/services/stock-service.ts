@@ -13,7 +13,7 @@ export class StockService {
   constructor(private http: HttpClient) {}
 
   getStocks(): Observable<any> {
-    return this.http.get<any>(`${STOCK_URL}/GetStocks`);
+    return this.http.get<any>(`${STOCK_URL}/GetStock`);
   }
 
   crearStock(stock: any): Observable<any> {

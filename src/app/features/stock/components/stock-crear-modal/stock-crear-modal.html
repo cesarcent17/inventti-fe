@@ -1,1 +1,51 @@
-<p>stock-crear-modal works!</p>
+<p-dialog [(visible)]="visible" [modal]="true" [header]="'Agregar Stock'" [closable]="true"
+  [style]="{ width: '400px' }" (onHide)="onDialogClose()">
+
+  <div class="{{baseClass}}__container">
+
+    <form [formGroup]="formstock" (ngSubmit)="guardar()">
+      <div class="{{baseClass}}__form--column">
+
+        <!-- <div class="{{baseClass}}__field {{baseClass}}__field--codigo field">
+          <label>Código</label>
+          <input pInputText formControlName="codigo" />
+        </div>
+
+        <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
+          <label>Descripción</label>
+          <input pInputText formControlName="descripcion" />
+        </div> -->
+
+         <div class="{{baseClass}}__field {{baseClass}}__field--producto field">
+          <label>Lote</label>
+          <select formControlName="idLote" class="p-inputtext">
+            <option value="" disabled selected>Seleccione un Lote</option>
+            <option *ngFor="let lote of lotes" [value]="lote.idLote">
+              {{ lote.codigo }}
+            </option>
+          </select>
+        </div>
+
+         <div class="{{baseClass}}__field {{baseClass}}__field--producto field">
+          <label>Ubicación</label>
+          <select formControlName="idUbicacion" class="p-inputtext">
+            <option value="" disabled selected>Seleccione una Ubicación</option>
+            <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.idUbicacion">
+              {{ ubicacion.nombre }}
+            </option>
+          </select>
+        </div>
+
+         <div class="{{baseClass}}__field">
+          <label for="cantidad" class="{{baseClass}}__label">Cantidad</label>
+          <input pInputText id="cantidad" type="number" formControlName="cantidad" />
+        </div>
+
+        <div class="{{baseClass}}__button">
+          <button pButton type="submit" label="Guardar" [disabled]="formstock.invalid"></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</p-dialog>

@@ -5,10 +5,10 @@
         </button>
     </div>
 
-    <!-- <app-stock-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
-        (onSave)="guardarstock($event)"></app-stock-crear-modal>
+    <app-stock-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+        (onSave)="guardarStock($event)"></app-stock-crear-modal>
 
-    <app-stock-editar-modal [(visible)]="mostrarEditarModal" [stock]="stockSeleccionada"
+    <!-- <app-stock-editar-modal [(visible)]="mostrarEditarModal" [stock]="stockSeleccionada"
         (onGuardar)="actualizarListadostockes()" (visibleChange)="mostrarEditarModal = $event">
     </app-stock-editar-modal> -->
 
@@ -17,12 +17,13 @@
 
         <ng-template #header>
             <tr>
-                <th style="width:5%">Id</th>
-                <th style="width:10%">Cantidad</th>
-                <th style="width:15%">Fecha Ingreso</th>
-                <th style="width:15%">Ubicación</th>
-                <th style="width:10%">Lote</th>
-                <th style="width:10%">Acciones</th>
+                <th style="width:7%">Id</th>
+                <th style="width:12%">Cantidad</th>
+                <th style="width:14%">Fecha Ingreso</th>
+                <th style="width:14%">Código Ubicación</th>
+                <th style="width:12%">Código Lote</th>
+                <th style="width:12%">Producto Lote</th>
+                <th style="width:12%">Acciones</th>
             </tr>
 
             <tr>
@@ -44,6 +45,9 @@
                 </td>
                 <td>
                     {{ stock.lote?.codigo }}
+                </td>
+                <td>
+                    {{ stock.producto?.nombre }}
                 </td>
                 <td>
                     <button class="{{baseClass}}__button-edit" (click)="editarStock(stock)">✏️</button>
