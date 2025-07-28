@@ -28,7 +28,7 @@ export class ProductoEditarModal {
   // };
   
   editableProducto: any = {
-    idProducto: 0,  // Asegúrate de que el idUbicacion esté correctamente inicializado
+    idProducto: 0,
     codigo: '',
     nombre: '',
     descripcion: '',
@@ -36,8 +36,9 @@ export class ProductoEditarModal {
     idMarca: '',
     idCategoria: '',
     idUbicacion: '',
-    estado: '',
-    idUnidadMedida: ''
+    estado: 'ACTIVO',
+    idUnidadMedida: '',
+    esEliminado: false
   };
 
   baseClass: string = 'producto-editar-modal';
@@ -55,6 +56,16 @@ export class ProductoEditarModal {
       this.marcaService.getMarcas().subscribe((data: any) => {
         this.marcas = data.data;
         this.editableProducto.idMarca = this.producto.marca?.idMarca;
+      });
+
+      this.categoriaService.getCategorias().subscribe((data: any) => {
+        this.categorias = data.data;
+        this.editableProducto.idCategoria = this.producto.categoria?.idCategoria;
+      });
+
+      this.unidadMedidaService.getUnidadesMedida().subscribe((data: any) => {
+        this.unidadesMedida = data.data;
+        this.editableProducto.idUnidadMedida = this.producto.unidadMedida?.idUnidadMedida;
       });
     }
   }
@@ -75,15 +86,17 @@ export class ProductoEditarModal {
     //   estado: this.producto.estado
     // };
 
-    // this.productoService.actualizarProducto(payload).subscribe({
-    //   next: () => {
-    //     this.visibleChange.emit(false);
-    //     this.onGuardar.emit();
-    //   },
-    //   error: (err) => {
-    //     console.error('Error al actualizar ubicación', err);
-    //   }
-    // });
+     const { marca, categoria, unidadMedida, fechaCreacion, ...productoAEnviar } = this.editableProducto;
+
+    this.productoService.actualizarProducto(productoAEnviar).subscribe({
+      next: () => {
+        this.visibleChange.emit(false);
+        this.onGuardar.emit();
+      },
+      error: (err) => {
+        console.error('Error al actualizar ubicación', err);
+      }
+    });
   }
 
   cerrar() {

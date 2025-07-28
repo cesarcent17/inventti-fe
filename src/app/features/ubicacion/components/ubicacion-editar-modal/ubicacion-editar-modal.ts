@@ -23,7 +23,7 @@ export class UbicacionEditarModal {
   @Output() onGuardar = new EventEmitter<void>();
 
   editableUbicacion: any = {
-    idUbicacion: 0,  // Asegúrate de que el idUbicacion esté correctamente inicializado
+    idUbicacion: 0, 
     codigoPercha: '',
     descripcion: '',
     idPasillo: '',
@@ -43,10 +43,8 @@ export class UbicacionEditarModal {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['ubicacion'] && this.ubicacion) {
-      // Asegurándonos de que los valores de idUbicacion y otros campos estén correctamente copiados
       this.editableUbicacion = { ...this.ubicacion };
 
-      // Cargar pasillos y estantes
       this.pasilloService.getPasillos().subscribe((data: any) => {
         this.pasillos = data.data;
         this.editableUbicacion.idPasillo = this.ubicacion.pasillo?.idPasillo;

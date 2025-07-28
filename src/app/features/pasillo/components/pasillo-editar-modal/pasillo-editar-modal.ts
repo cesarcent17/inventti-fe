@@ -45,7 +45,7 @@ export class PasilloEditarModal {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['pasillo'] && this.pasillo) {
-      // Hacemos una copia para edición local
+     
       this.editablepasillo = { ...this.pasillo };
     }
   }

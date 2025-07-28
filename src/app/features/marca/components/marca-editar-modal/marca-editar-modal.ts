@@ -31,7 +31,7 @@ export class MarcaEditarModal {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['marca'] && this.marca) {
-      // Hacemos una copia para edición local
+     
       this.editableMarca = { ...this.marca };
     }
   }

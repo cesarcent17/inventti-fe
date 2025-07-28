@@ -22,7 +22,7 @@ export class StockEditarModal {
   @Output() onGuardar = new EventEmitter<void>();
 
   editablestock: any = {
-    idStock: '',  // Asegúrate de que el idstock esté correctamente inicializado
+    idStock: '', 
     idLote: '',
     idUbicacion: '',
     cantidad: '',
@@ -42,10 +42,8 @@ export class StockEditarModal {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['stock'] && this.stock) {
-      // Asegurándonos de que los valores de idstock y otros campos estén correctamente copiados
       this.editablestock = { ...this.stock };
 
-      // Cargar lotes y ubicaciones
       this.loteService.getLotes().subscribe((data: any) => {
         this.lotes = data.data;
         this.editablestock.idLote = this.stock.lote?.idLote;

@@ -47,7 +47,7 @@ export class EstanteEditarModal {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['estante'] && this.estante) {
-      // Hacemos una copia para edición local
+     
       this.editableestante = { ...this.estante };
     }
   }

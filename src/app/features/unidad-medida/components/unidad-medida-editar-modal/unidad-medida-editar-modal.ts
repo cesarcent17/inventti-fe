@@ -44,7 +44,6 @@ export class UnidadMedidaEditarModal {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['unidadMedida'] && this.unidadMedida) {
-      // Hacemos una copia para edición local
       this.editableUnidadMedida = { ...this.unidadMedida };
     }
   }

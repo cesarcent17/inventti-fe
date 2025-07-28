@@ -1,41 +1,59 @@
-<p-dialog [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Producto">
-  <div class="{{baseClass}}__container">
-    <div class="{{baseClass}}__field">
-      <label for="codigo">Código</label>
-      <input id="codigo" type="text" [(ngModel)]="editableProducto.codigo" class="p-inputtext" readonly />
+<p-dialog [style]="{ width: '37rem' }" [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Producto">
+    <div class="{{baseClass}}__container">
+        <div class="{{baseClass}}__field">
+            <label for="codigo">Código</label>
+            <input id="codigo" type="text" [(ngModel)]="editableProducto.codigo" class="p-inputtext" />
+        </div>
+
+        <div class="{{baseClass}}__field">
+            <label for="descripcion">Nombre</label>
+            <input id="descripcion" type="text" [(ngModel)]="editableProducto.nombre" class="p-inputtext" />
+        </div>
+
+        <div class="{{baseClass}}__field">
+            <label for="descripcion">Descripción</label>
+            <input id="descripcion" type="text" [(ngModel)]="editableProducto.descripcion" class="p-inputtext" />
+        </div>
+
+        <div class="{{baseClass}}__field">
+            <label for="precio">Precio</label>
+            <input id="precio" type="number" [(ngModel)]="editableProducto.precio" class="p-inputtext" />
+        </div>
+
+        <div class="{{baseClass}}__field">
+            <label for="marca">Marca</label>
+            <select id="marca" [(ngModel)]="editableProducto.idMarca" class="p-inputtext">
+                <option value="" disabled selected>Seleccione una Marca</option>
+                <option *ngFor="let marca of marcas" [value]="marca.idMarca">
+                    {{ marca.nombre }}
+                </option>
+            </select>
+        </div>
+
+        <div class="{{baseClass}}__field">
+            <label for="categoria">Categoria</label>
+            <select id="categoria" [(ngModel)]="editableProducto.idCategoria" class="p-inputtext">
+                <option value="" disabled selected>Seleccione una Categoria</option>
+                <option *ngFor="let categoria of categorias" [value]="categoria.idCategoria">
+                    {{ categoria.nombre }}
+                </option>
+            </select>
+        </div>
+
+        <div class="{{baseClass}}__field">
+            <label for="unidadMedida">Unidad de Medida</label>
+            <select id="unidadMedida" [(ngModel)]="editableProducto.idUnidadMedida" class="p-inputtext">
+                <option value="" disabled selected>Seleccione una Unidad de Medida</option>
+                <option *ngFor="let unidad of unidadesMedida" [value]="unidad.idUnidadMedida">
+                    {{ unidad.nombre }}
+                </option>
+            </select>
+        </div>
+
     </div>
 
-    <div class="{{baseClass}}__field">
-      <label for="descripcion">Nombre</label>
-      <input id="descripcion" type="text" [(ngModel)]="editableProducto.nombre" class="p-inputtext" />
-    </div>
-
-    <div class="{{baseClass}}__field">
-      <label for="descripcion">Descripción</label>
-      <input id="descripcion" type="text" [(ngModel)]="editableProducto.descripcion" class="p-inputtext" />
-    </div>
-
-    <div class="{{baseClass}}__field">
-      <label for="precio">Precio</label>
-      <input id="precio" type="number" [(ngModel)]="editableProducto.precio" class="p-inputtext" />
-    </div>
-
-    <div class="{{baseClass}}__field">
-      <label for="marca">Marca</label>
-      <select id="marca" [(ngModel)]="editableProducto.idMarca" class="p-inputtext">
-        <option value="" disabled selected>Seleccione una Marca</option>
-        <option *ngFor="let marca of marcas" [value]="marca.idMarca">
-          {{ marca.nombre }}
-        </option>
-      </select>
-    </div>
-
-    
-
-  </div>
-
-  <ng-template pTemplate="footer">
-    <button pButton label="Cancelar" class="p-button-text" (click)="cerrar()"></button>
-    <button pButton label="Guardar" class="p-button-success" (click)="guardar()"></button>
-  </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton label="Cancelar" class="p-button-text" (click)="cerrar()"></button>
+        <button pButton label="Guardar" class="p-button-success" (click)="guardar()"></button>
+    </ng-template>
 </p-dialog>

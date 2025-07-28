@@ -32,7 +32,7 @@ export class CategoriaEditarModal {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['categoria'] && this.categoria) {
-      // Hacemos una copia para edición local
+     
       this.editableCategoria = { ...this.categoria };
     }
   }
