@@ -5,12 +5,12 @@
         </button>
     </div>
 
-    <!-- <app-estante-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
-        (onSave)="guardarestante($event)"></app-estante-crear-modal>
+    <app-estante-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+        (onSave)="guardarEstante($event)"></app-estante-crear-modal>
 
     <app-estante-editar-modal [(visible)]="mostrarEditarModal" [estante]="estanteSeleccionada"
-        (onGuardar)="actualizarListadoestantees()" (visibleChange)="mostrarEditarModal = $event">
-    </app-estante-editar-modal> -->
+        (onGuardar)="actualizarListadoEstantes()" (visibleChange)="mostrarEditarModal = $event">
+    </app-estante-editar-modal>
 
     <p-table class="{{baseClass}}__table" #dt2 [value]="estante" dataKey="id" [rows]="10"
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">

@@ -1,18 +1,38 @@
 <p-dialog [(visible)]="visible" [modal]="true" [header]="'Agregar Ubicación'" [closable]="true"
-  [style]="{ width: '400px' }" (onHide)="visibleChange.emit(false)">
+  [style]="{ width: '400px' }" (onHide)="onDialogClose()">
 
   <div class="{{baseClass}}__container">
 
     <form [formGroup]="formUbicacion" (ngSubmit)="guardar()">
       <div class="{{baseClass}}__form--column">
-        <div class="{{baseClass}}__field {{baseClass}}__field--nombre field">
+        <!-- <div class="{{baseClass}}__field {{baseClass}}__field--nombre field">
           <label>Código Percha</label>
           <input pInputText formControlName="codigoPercha" />
-        </div>
+        </div> -->
 
         <div class="{{baseClass}}__field {{baseClass}}__field--descripcion field">
           <label>Descripción</label>
           <input pInputText formControlName="descripcion" />
+        </div>
+
+         <div class="{{baseClass}}__field {{baseClass}}__field--pasillo field">
+          <label>Pasillo</label>
+          <select formControlName="idPasillo" class="p-inputtext">
+            <option value="" disabled selected>Seleccione un Pasillo</option>
+            <option *ngFor="let pasillo of pasillos" [value]="pasillo.idPasillo">
+              {{ pasillo.nombre }}
+            </option>
+          </select>
+        </div>
+
+        <div class="{{baseClass}}__field {{baseClass}}__field--estante field">
+          <label>Estante</label>
+          <select formControlName="idEstante" class="p-inputtext">
+            <option value="" disabled selected>Seleccione un Estante</option>
+            <option *ngFor="let estante of estantes" [value]="estante.idEstante">
+              {{ estante.nombre }}
+            </option>
+          </select>
         </div>
 
         <div class="{{baseClass}}__button">

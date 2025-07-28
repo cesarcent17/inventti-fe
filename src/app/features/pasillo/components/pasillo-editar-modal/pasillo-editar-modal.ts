@@ -57,7 +57,7 @@ export class PasilloEditarModal {
         this.onGuardar.emit();
       },
       error: (err) => {
-        console.error('Error al actualizar categoría', err);
+        console.error('Error al actualizar el pasillo', err);
       }
     });
   }

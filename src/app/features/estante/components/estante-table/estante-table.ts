@@ -22,7 +22,7 @@ import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-estante-table',
-  imports: [EstanteCrearModal, TableModule, EstanteEditarModal, TagModule],
+  imports: [EstanteCrearModal, TableModule, EstanteEditarModal, TagModule, EstanteCrearModal],
   templateUrl: './estante-table.html',
   styleUrl: './estante-table.css'
 })

@@ -1,18 +1,39 @@
-<p-dialog [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Ubicación">
-    <div class="{{baseClass}}__container">
-
-        <div class="{{baseClass}}__field">
-            <label for="nombre">Nombre</label>
-            <input id="nombre" type="text" [(ngModel)]="ubicacion.codigoPercha" class="p-inputtext" />
-        </div>
-
-        <div class="{{baseClass}}__field">
-            <label for="descripcion">Descripción</label>
-            <input id="descripcion" type="text" [(ngModel)]="ubicacion.descripcion" class="p-inputtext" />
-        </div>
+<p-dialog [style]="{ width: '400px' }" [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Ubicación">
+  <div class="{{baseClass}}__container">
+    <div class="{{baseClass}}__field">
+      <label for="codigoPercha">Código Percha</label>
+      <input id="codigoPercha" type="text" [value]="editableUbicacion.codigoPercha" class="p-inputtext" readonly />
     </div>
-    <ng-template pTemplate="footer">
-        <button pButton label="Cancelar" class="p-button-text" (click)="cerrar()"></button>
-        <button pButton label="Guardar" class="p-button-success" (click)="guardar()"></button>
-    </ng-template>
+
+    <div class="{{baseClass}}__field">
+      <label for="descripcion">Descripción</label>
+      <input id="descripcion" type="text" [(ngModel)]="editableUbicacion.descripcion" class="p-inputtext" />
+    </div>
+
+    <div class="{{baseClass}}__field">
+      <label for="pasillo">Pasillo</label>
+      <select id="pasillo" [(ngModel)]="editableUbicacion.idPasillo" class="p-inputtext">
+        <option value="" disabled selected>Seleccione un Pasillo</option>
+        <option *ngFor="let pasillo of pasillos" [value]="pasillo.idPasillo">
+          {{ pasillo.nombre }}
+        </option>
+      </select>
+    </div>
+
+    <div class="{{baseClass}}__field">
+      <label for="estante">Estante</label>
+      <select id="estante" [(ngModel)]="editableUbicacion.idEstante" class="p-inputtext">
+        <option value="" disabled selected>Seleccione un Estante</option>
+        <option *ngFor="let estante of estantes" [value]="estante.idEstante">
+          {{ estante.nombre }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button pButton label="Cancelar" class="p-button-text" (click)="cerrar()"></button>
+    <button pButton label="Guardar" class="p-button-success" (click)="guardar()"></button>
+  </ng-template>
 </p-dialog>
+

@@ -5,12 +5,12 @@
         </button>
     </div>
 
-    <!-- <app-lote-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
-        (onSave)="guardarlote($event)"></app-lote-crear-modal>
+    <app-lote-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
+        (onSave)="guardarLote($event)"></app-lote-crear-modal>
 
     <app-lote-editar-modal [(visible)]="mostrarEditarModal" [lote]="loteSeleccionada"
         (onGuardar)="actualizarListadolotees()" (visibleChange)="mostrarEditarModal = $event">
-    </app-lote-editar-modal> -->
+    </app-lote-editar-modal>
 
     <p-table class="{{baseClass}}__table" #dt2 [value]="lotes" dataKey="id" [rows]="10"
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">

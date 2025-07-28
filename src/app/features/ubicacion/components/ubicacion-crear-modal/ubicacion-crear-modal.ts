@@ -5,6 +5,8 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { UbicacionService } from '../../services/ubicacion-service';
+import { PasilloService } from '../../../pasillo/services/pasillo-service';
+import { EstanteService } from '../../../estante/services/estante-service';
 
 @Component({
   selector: 'app-ubicacion-crear-modal',
@@ -24,24 +26,32 @@ export class UbicacionCrearModal {
 
   formUbicacion: FormGroup;
 
+   pasillos: any[] = [];
+  estantes: any[] = [];
+
   constructor(private fb: FormBuilder,
-    private ubicacionService: UbicacionService
+    private ubicacionService: UbicacionService,
+    private pasilloService: PasilloService,
+    private estanteService: EstanteService
   ) {
     
     this.formUbicacion = this.fb.group({
-      codigoPercha: ['', Validators.required],
-      descripcion : ['', Validators.required]
+      descripcion : ['', Validators.required],
+      idPasillo: ['', Validators.required],
+      idEstante: ['', Validators.required]
     });
   }
 
-  // guardar() {
-  //   if (this.formUbicacion.valid) {
-  //     this.onSave.emit(this.formUbicacion.value);
-  //     this.formUbicacion.reset();
-  //     this.onClose.emit();
-  //      this.visibleChange.emit(false);
-  //   }
-  // }
+   ngOnInit() {
+    this.pasilloService.getPasillos().subscribe(data => {
+      this.pasillos = data.data;
+    });
+
+    this.estanteService.getEstantes().subscribe(data => {
+      this.estantes = data.data;
+      console.log('Estantes cargados:', this.estantes);
+    });
+  }
 
   guardar() {
     if (this.formUbicacion.valid) {
@@ -58,5 +68,10 @@ export class UbicacionCrearModal {
         }
       });
     }
+  }
+
+  onDialogClose() {
+    this.visibleChange.emit(false);
+    this.formUbicacion.reset();
   }
 }

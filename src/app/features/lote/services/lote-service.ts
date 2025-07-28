@@ -13,7 +13,7 @@ export class LoteService {
   constructor(private http: HttpClient) {}
 
   getLotes(): Observable<any> {
-    return this.http.get<any>(`${LOTE_URL}/GetLotes`);
+    return this.http.get<any>(`${LOTE_URL}/GetLote`);
   }
 
   crearLote(lote: any): Observable<any> {

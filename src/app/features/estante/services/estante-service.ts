@@ -13,7 +13,7 @@ export class EstanteService {
   constructor(private http: HttpClient) {}
 
   getEstantes(): Observable<any> {
-    return this.http.get<any>(`${ESTANTE_URL}/GetEstantes`);
+    return this.http.get<any>(`${ESTANTE_URL}/GetEstante`);
   }
 
   crearEstante(estante: any): Observable<any> {

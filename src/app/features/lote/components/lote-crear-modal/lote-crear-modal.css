@@ -1,0 +1,10 @@
+.lote-crear-modal__form--column {
+  display: flex;
+  flex-direction: column;
+}
+
+.lote-crear-modal__field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}

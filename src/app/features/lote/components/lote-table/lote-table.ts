@@ -49,10 +49,10 @@ export class LoteTable {
   }
 
   eliminarLote(lote: any) {
-    if (confirm(`¿Estás seguro de eliminar el lote "${lote.nombre}"?`)) {
-      this.loteService.eliminarLote(lote.idlote).subscribe({
+    if (confirm(`¿Estás seguro de eliminar el lote "${lote.codigo}"?`)) {
+      this.loteService.eliminarLote(lote.idLote).subscribe({
         next: () => {
-          this.lotes = this.lotes.filter(c => c.idlote !== lote.idlote);
+          this.lotes = this.lotes.filter(c => c.idLote !== lote.idLote);
         },
         error: (err) => {
           console.error('Error al eliminar el lote:', err);

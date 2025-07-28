@@ -1,1 +1,28 @@
-<p>lote-editar-modal works!</p>
+<p-dialog [style]="{ width: '400px' }" [(visible)]="visible" [modal]="true" [closable]="false" header="Editar Lote">
+  <div class="{{baseClass}}__container">
+    <div class="{{baseClass}}__field">
+      <label for="codigo">Código</label>
+      <input id="codigo" type="text" [(ngModel)]="editableLote.codigo" class="p-inputtext" />
+    </div>
+
+    <div class="{{baseClass}}__field">
+      <label for="descripcion">Descripción</label>
+      <input id="descripcion" type="text" [(ngModel)]="editableLote.descripcion" class="p-inputtext" />
+    </div>
+
+    <div class="{{baseClass}}__field">
+      <label for="producto">Producto</label>
+      <select id="producto" [(ngModel)]="editableLote.idProducto" class="p-inputtext">
+        <option value="" disabled selected>Seleccione un producto</option>
+        <option *ngFor="let producto of productos" [value]="producto.idProducto">
+          {{ producto.nombre }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button pButton label="Cancelar" class="p-button-text" (click)="cerrar()"></button>
+    <button pButton label="Guardar" class="p-button-success" (click)="guardar()"></button>
+  </ng-template>
+</p-dialog>
