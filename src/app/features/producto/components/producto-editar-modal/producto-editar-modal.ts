@@ -47,7 +47,7 @@ export class ProductoEditarModal {
   descripcion: string = '';
 
   errorVisible: boolean = false;
-  errorMessage: string = 'Hola Maradona 2025';
+  errorMessage: string = '';
   errorDetails: Record<string, string[]> | null = null;
 
 

@@ -18,3 +18,9 @@
         <button pButton label="Guardar" class="p-button-success" (click)="guardar()"></button>
     </ng-template>
 </p-dialog>
+
+<app-error-modal
+  [(visible)]="errorVisible"
+  [errorMessage]="errorMessage"
+  [errorDetails]="errorDetails">
+</app-error-modal>

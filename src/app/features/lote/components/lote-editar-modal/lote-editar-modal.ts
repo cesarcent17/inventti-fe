@@ -5,11 +5,12 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { LoteService } from '../../services/lote-service';
 import { ProductoService } from '../../../producto/services/producto-service';
+import { ErrorModalComponent } from '../../../../shared/components/error-modal/error-modal';
 
 @Component({
   selector: 'app-lote-editar-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, DialogModule, ButtonModule],
+  imports: [CommonModule, FormsModule, DialogModule, ButtonModule, ErrorModalComponent],
   templateUrl: './lote-editar-modal.html',
   styleUrls: ['./lote-editar-modal.css']
 })
@@ -26,6 +27,10 @@ export class LoteEditarModal {
     idProducto: ''
   };
 
+  errorVisible: boolean = false;
+  errorMessage: string = '';
+  errorDetails: Record<string, string[]> | null = null;
+
   productos: any[] = [];
 
   baseClass: string = 'lote-editar-modal';
@@ -33,7 +38,7 @@ export class LoteEditarModal {
   constructor(
     private loteService: LoteService,
     private productoService: ProductoService
-  ) {}
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['lote'] && this.lote) {
@@ -43,7 +48,7 @@ export class LoteEditarModal {
       // Cargamos la lista de productos
       this.productoService.getProductos().subscribe((data: any) => {
         this.productos = data.data;
-        
+
         // Aseguramos que el producto seleccionado sea el correcto
         this.editableLote.idProducto = this.lote.producto?.idProducto;
       });
@@ -60,8 +65,10 @@ export class LoteEditarModal {
         this.visibleChange.emit(false);
         this.onGuardar.emit();
       },
-      error: (err) => {
-        console.error('Error al actualizar lote', err);
+       error: (error) => {
+        this.errorMessage = error?.error?.message;
+        this.errorDetails = error?.error?.errors;
+        this.errorVisible = true;
       }
     });
   }

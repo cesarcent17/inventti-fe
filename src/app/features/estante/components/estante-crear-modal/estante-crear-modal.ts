@@ -17,11 +17,12 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { EstanteService } from '../../services/estante-service';
+import { ErrorModalComponent } from '../../../../shared/components/error-modal/error-modal';
 
 
 @Component({
   selector: 'app-estante-crear-modal',
-  imports: [CommonModule, DialogModule, ButtonModule, InputTextModule, ReactiveFormsModule],
+  imports: [CommonModule, DialogModule, ButtonModule, InputTextModule, ReactiveFormsModule, ErrorModalComponent],
   standalone: true,
   templateUrl: './estante-crear-modal.html',
   styleUrl: './estante-crear-modal.css'
@@ -30,6 +31,10 @@ export class EstanteCrearModal {
   @Output() onClose = new EventEmitter<void>();
   @Output() onSave = new EventEmitter<any>();
   baseClass: string = 'estante-crear-modal';
+
+    errorVisible: boolean = false;
+  errorMessage: string = '';
+  errorDetails: Record<string, string[]> | null = null;
 
   @Input() visible: boolean = false;
 @Output() visibleChange = new EventEmitter<boolean>();
@@ -56,9 +61,11 @@ export class EstanteCrearModal {
           this.visibleChange.emit(false);
           this.formestante.reset();
         },
-        error: (err) => {
-          console.error('Error al crear estante:', err);
-        }
+        error: (error) => {
+        this.errorMessage = error?.error?.message;
+        this.errorDetails = error?.error?.errors;
+        this.errorVisible = true;
+      }
       });
     }
   }

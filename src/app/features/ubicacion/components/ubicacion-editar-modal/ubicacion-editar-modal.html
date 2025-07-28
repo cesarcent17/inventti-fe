@@ -37,3 +37,8 @@
   </ng-template>
 </p-dialog>
 
+<app-error-modal
+  [(visible)]="errorVisible"
+  [errorMessage]="errorMessage"
+  [errorDetails]="errorDetails">
+</app-error-modal>

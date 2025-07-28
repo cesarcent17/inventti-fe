@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { MarcaService } from '../../services/marca-service';
+import { ErrorModalComponent } from '../../../../shared/components/error-modal/error-modal';
 
 @Component({
   selector: 'app-marca-editar-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, DialogModule, ButtonModule],
+  imports: [CommonModule, FormsModule, DialogModule, ButtonModule, ErrorModalComponent],
   templateUrl: './marca-editar-modal.html',
   styleUrls: ['./marca-editar-modal.css']
 })
@@ -24,6 +25,10 @@ export class MarcaEditarModal {
   };
 
     baseClass: string = 'marca-editar-modal';
+
+      errorVisible: boolean = false;
+  errorMessage: string = '';
+  errorDetails: Record<string, string[]> | null = null;
 
 
 
@@ -42,8 +47,10 @@ export class MarcaEditarModal {
         this.visibleChange.emit(false);
         this.onGuardar.emit();
       },
-      error: (err) => {
-        console.error('Error al actualizar marca', err);
+      error: (error) => {
+        this.errorMessage = error?.error?.message;
+        this.errorDetails = error?.error?.errors;
+        this.errorVisible = true;
       }
     });
   }

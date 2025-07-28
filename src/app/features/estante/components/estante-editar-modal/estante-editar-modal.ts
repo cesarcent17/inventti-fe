@@ -19,11 +19,12 @@ import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { EstanteService } from '../../services/estante-service';
+import { ErrorModalComponent } from '../../../../shared/components/error-modal/error-modal';
 
 @Component({
   selector: 'app-estante-editar-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, DialogModule, ButtonModule],
+  imports: [CommonModule, FormsModule, DialogModule, ButtonModule, ErrorModalComponent],
   templateUrl: './estante-editar-modal.html',
   styleUrls: ['./estante-editar-modal.css']
 })
@@ -38,7 +39,9 @@ export class EstanteEditarModal {
     descripcion: '',
     estado: ''
   };
-
+  errorVisible: boolean = false;
+  errorMessage: string = '';
+  errorDetails: Record<string, string[]> | null = null;
     baseClass: string = 'estante-editar-modal';
 
 
@@ -58,8 +61,10 @@ export class EstanteEditarModal {
         this.visibleChange.emit(false);
         this.onGuardar.emit();
       },
-      error: (err) => {
-        console.error('Error al actualizar el estante', err);
+     error: (error) => {
+        this.errorMessage = error?.error?.message;
+        this.errorDetails = error?.error?.errors;
+        this.errorVisible = true;
       }
     });
   }

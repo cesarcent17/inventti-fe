@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { CategoriaService } from '../../services/categoria-service';
+import { ErrorModalComponent } from '../../../../shared/components/error-modal/error-modal';
 
 @Component({
   selector: 'app-categoria-editar-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, DialogModule, ButtonModule],
+  imports: [CommonModule, FormsModule, DialogModule, ButtonModule, ErrorModalComponent],
   templateUrl: './categoria-editar-modal.html',
   styleUrls: ['./categoria-editar-modal.css']
 })
@@ -23,6 +24,10 @@ export class CategoriaEditarModal {
     descripcion: '',
     estado: ''
   };
+
+    errorVisible: boolean = false;
+  errorMessage: string = '';
+  errorDetails: Record<string, string[]> | null = null;
 
     baseClass: string = 'categoria-editar-modal';
 
@@ -43,8 +48,10 @@ export class CategoriaEditarModal {
         this.visibleChange.emit(false);
         this.onGuardar.emit();
       },
-      error: (err) => {
-        console.error('Error al actualizar categoría', err);
+      error: (error) => {
+        this.errorMessage = error?.error?.message;
+        this.errorDetails = error?.error?.errors;
+        this.errorVisible = true;
       }
     });
   }

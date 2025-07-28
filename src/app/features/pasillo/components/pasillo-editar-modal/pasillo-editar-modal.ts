@@ -17,11 +17,12 @@ import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { PasilloService } from '../../services/pasillo-service';
+import { ErrorModalComponent } from '../../../../shared/components/error-modal/error-modal';
 
 @Component({
   selector: 'app-pasillo-editar-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, DialogModule, ButtonModule],
+  imports: [CommonModule, FormsModule, DialogModule, ButtonModule, ErrorModalComponent],
   templateUrl: './pasillo-editar-modal.html',
   styleUrls: ['./pasillo-editar-modal.css']
 })
@@ -38,6 +39,10 @@ export class PasilloEditarModal {
   };
 
     baseClass: string = 'pasillo-editar-modal';
+
+      errorVisible: boolean = false;
+  errorMessage: string = '';
+  errorDetails: Record<string, string[]> | null = null;
 
 
 
@@ -56,8 +61,10 @@ export class PasilloEditarModal {
         this.visibleChange.emit(false);
         this.onGuardar.emit();
       },
-      error: (err) => {
-        console.error('Error al actualizar el pasillo', err);
+      error: (error) => {
+        this.errorMessage = error?.error?.message;
+        this.errorDetails = error?.error?.errors;
+        this.errorVisible = true;
       }
     });
   }

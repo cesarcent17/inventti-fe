@@ -6,13 +6,14 @@ import { ButtonModule } from 'primeng/button';
 import { UbicacionService } from '../../services/ubicacion-service';
 import { PasilloService } from '../../../pasillo/services/pasillo-service';
 import { EstanteService } from '../../../estante/services/estante-service';
+import { ErrorModalComponent } from '../../../../shared/components/error-modal/error-modal';
 // import { PasilloService } from '../../services/pasillo-service';
 // import { EstanteService } from '../../services/estante-service';
 
 @Component({
   selector: 'app-ubicacion-editar-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, DialogModule, ButtonModule],
+  imports: [CommonModule, FormsModule, DialogModule, ButtonModule, ErrorModalComponent ],
   templateUrl: './ubicacion-editar-modal.html',
   styleUrls: ['./ubicacion-editar-modal.css']
 })
@@ -34,6 +35,10 @@ export class UbicacionEditarModal {
   estantes: any[] = [];
 
   baseClass: string = 'ubicacion-editar-modal';
+
+    errorVisible: boolean = false;
+  errorMessage: string = '';
+  errorDetails: Record<string, string[]> | null = null;
 
   constructor(
     private ubicacionService: UbicacionService,
@@ -68,9 +73,11 @@ guardar() {
       this.visibleChange.emit(false);
       this.onGuardar.emit();
     },
-    error: (err) => {
-      console.error('Error al actualizar ubicación', err);
-    }
+    error: (error) => {
+        this.errorMessage = error?.error?.message;
+        this.errorDetails = error?.error?.errors;
+        this.errorVisible = true;
+      }
   });
 }
 

@@ -17,12 +17,13 @@ import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { UnidadMedidaService } from '../../services/unidad-medida-service';
+import { ErrorModalComponent } from '../../../../shared/components/error-modal/error-modal';
 // import { Unidad } from '../../services/marca-service';
 
 @Component({
   selector: 'app-unidad-medida-editar-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, DialogModule, ButtonModule],
+  imports: [CommonModule, FormsModule, DialogModule, ButtonModule, ErrorModalComponent],
   templateUrl: './unidad-medida-editar-modal.html',
   styleUrls: ['./unidad-medida-editar-modal.css']
 })
@@ -37,6 +38,10 @@ export class UnidadMedidaEditarModal {
     simbolo: '',
     descripcion: ''
   };
+
+  errorVisible: boolean = false;
+  errorMessage: string = '';
+  errorDetails: Record<string, string[]> | null = null;
 
   baseClass: string = 'unidad-medida-editar-modal';
 
@@ -54,8 +59,10 @@ export class UnidadMedidaEditarModal {
         this.visibleChange.emit(false);
         this.onGuardar.emit();
       },
-      error: (err) => {
-        console.error('Error al actualizar unidad de medida', err);
+      error: (error) => {
+        this.errorMessage = error?.error?.message;
+        this.errorDetails = error?.error?.errors;
+        this.errorVisible = true;
       }
     });
   }
