@@ -47,6 +47,7 @@ export class StockCrearModal {
    ngOnInit() {
     this.loteService.getLotes().subscribe(data => {
       this.lotes = data.data;
+      console.log('Lotes:', this.lotes);
     });
 
     this.ubicacionService.getUbicaciones().subscribe(data => {

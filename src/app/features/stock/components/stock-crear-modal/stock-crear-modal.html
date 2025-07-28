@@ -1,5 +1,5 @@
-<p-dialog [(visible)]="visible" [modal]="true" [header]="'Agregar Stock'" [closable]="true"
-  [style]="{ width: '400px' }" (onHide)="onDialogClose()">
+<p-dialog [(visible)]="visible" [modal]="true" [header]="'Agregar Stock'" [closable]="true" [style]="{ width: '400px' }"
+  (onHide)="onDialogClose()">
 
   <div class="{{baseClass}}__container">
 
@@ -16,30 +16,36 @@
           <input pInputText formControlName="descripcion" />
         </div> -->
 
-         <div class="{{baseClass}}__field {{baseClass}}__field--producto field">
+        <div class="{{baseClass}}__field {{baseClass}}__field--producto field">
           <label>Lote</label>
           <select formControlName="idLote" class="p-inputtext">
             <option value="" disabled selected>Seleccione un Lote</option>
             <option *ngFor="let lote of lotes" [value]="lote.idLote">
-              {{ lote.codigo }}
+              {{ lote.codigo }} - {{ lote.producto.nombre }}
             </option>
           </select>
         </div>
 
-         <div class="{{baseClass}}__field {{baseClass}}__field--producto field">
+        <div class="{{baseClass}}__field {{baseClass}}__field--producto field">
           <label>Ubicación</label>
           <select formControlName="idUbicacion" class="p-inputtext">
             <option value="" disabled selected>Seleccione una Ubicación</option>
             <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.idUbicacion">
-              {{ ubicacion.nombre }}
+              {{ ubicacion.codigoPercha }}
             </option>
           </select>
         </div>
 
-         <div class="{{baseClass}}__field">
+        <div class="{{baseClass}}__field">
           <label for="cantidad" class="{{baseClass}}__label">Cantidad</label>
           <input pInputText id="cantidad" type="number" formControlName="cantidad" />
         </div>
+
+        <div class="{{baseClass}}__field">
+          <label for="fechaIngreso" class="{{baseClass}}__label">Fecha de Ingreso</label>
+          <input pInputText id="fechaIngreso" type="date" formControlName="fechaIngreso" />
+        </div>
+
 
         <div class="{{baseClass}}__button">
           <button pButton type="submit" label="Guardar" [disabled]="formstock.invalid"></button>

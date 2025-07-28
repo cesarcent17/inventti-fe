@@ -61,10 +61,10 @@ export class StockTable {
   }
 
   eliminarStock(stock: any) {
-    if (confirm(`¿Estás seguro de eliminar el stock "${stock.nombre}"?`)) {
-      this.stockService.eliminarStock(stock.idstock).subscribe({
+    if (confirm(`¿Estás seguro de eliminar el stock "${stock.idStock}"?`)) {
+      this.stockService.eliminarStock(stock.idStock).subscribe({
         next: () => {
-          this.stock = this.stock.filter(c => c.idstock !== stock.idstock);
+          this.stock = this.stock.filter(c => c.idStock !== stock.idStock);
         },
         error: (err) => {
           console.error('Error al eliminar el stock:', err);
