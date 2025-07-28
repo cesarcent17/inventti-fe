@@ -1,1 +1,42 @@
-<p>stock-editar-modal works!</p>
+<p-dialog [style]="{ width: '400px' }" [(visible)]="visible" [modal]="true" [closable]="false"
+    header="Editar Ubicación">
+    <div class="{{baseClass}}__container">
+
+        <div class="{{baseClass}}__field {{baseClass}}__field--producto field">
+            <div class="{{baseClass}}__field">
+                <label for="lote">Lote</label>
+                <select id="lote" [(ngModel)]="editablestock.idLote" class="p-inputtext">
+                    <option value="" disabled selected>Seleccione un Lote</option>
+                    <option *ngFor="let lote of lotes" [value]="lote.idLote">
+                        {{ lote.codigo }} - {{ lote.producto.nombre }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="{{baseClass}}__field">
+                <label for="ubicacion">Ubicación</label>
+                <select id="ubicacion" [(ngModel)]="editablestock.idUbicacion" class="p-inputtext">
+                    <option value="" disabled selected>Seleccione una Ubicación</option>
+                    <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.idUbicacion">
+                        {{ ubicacion.codigoPercha }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="{{baseClass}}__field">
+                <label for="cantidad">Cantidad</label>
+                <input id="cantidad" type="number" [(ngModel)]="editablestock.cantidad" class="p-inputtext" />
+            </div>
+
+            <div class="{{baseClass}}__field">
+                <label for="fechaIngreso">Fecha de Ingreso</label>
+                <input id="fechaIngreso" type="date" [(ngModel)]="editablestock.fechaIngreso" class="p-inputtext" />
+            </div>
+        </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <button pButton label="Cancelar" class="p-button-text" (click)="cerrar()"></button>
+        <button pButton label="Guardar" class="p-button-success" (click)="guardar()"></button>
+    </ng-template>
+</p-dialog>

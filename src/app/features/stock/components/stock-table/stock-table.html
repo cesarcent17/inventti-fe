@@ -8,9 +8,9 @@
     <app-stock-crear-modal [(visible)]="mostrarModal" (onClose)="mostrarModal = false"
         (onSave)="guardarStock($event)"></app-stock-crear-modal>
 
-    <!-- <app-stock-editar-modal [(visible)]="mostrarEditarModal" [stock]="stockSeleccionada"
+    <app-stock-editar-modal [(visible)]="mostrarEditarModal" [stock]="stockSeleccionada"
         (onGuardar)="actualizarListadostockes()" (visibleChange)="mostrarEditarModal = $event">
-    </app-stock-editar-modal> -->
+    </app-stock-editar-modal>
 
     <p-table class="{{baseClass}}__table" #dt2 [value]="stock" dataKey="id" [rows]="10"
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [globalFilterFields]="['nombre']">
