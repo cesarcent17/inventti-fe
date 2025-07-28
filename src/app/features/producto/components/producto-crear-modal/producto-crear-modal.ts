@@ -5,6 +5,9 @@ import { CommonModule } from '@angular/common';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { MarcaService } from '../../../marca/services/marca-service';
+import { CategoriaService } from '../../../categoria/services/categoria-service';
+import { UnidadMedidaService } from '../../../unidad-medida/services/unidad-medida-service';
 
 @Component({
   selector: 'app-producto-crear-modal',
@@ -18,6 +21,11 @@ export class ProductoCrearModal {
   @Output() onClose = new EventEmitter<void>();
   @Output() onSave = new EventEmitter<any>();
   baseClass: string = 'producto-crear-modal';
+ 
+  marcas: any[] = [];
+  categorias: any[] = [];
+  unidadesMedida: any[] = [];
+
 
   @Input() visible: boolean = false;
   @Output() visibleChange = new EventEmitter<boolean>();
@@ -25,7 +33,10 @@ export class ProductoCrearModal {
   formProducto: FormGroup;
 
   constructor(private fb: FormBuilder,
-    private productoService: ProductoService
+    private productoService: ProductoService,
+    private marcaService: MarcaService,
+    private categoriaService: CategoriaService,
+    private unidadMedidaService: UnidadMedidaService
   ) {
     
     this.formProducto = this.fb.group({
@@ -33,14 +44,29 @@ export class ProductoCrearModal {
       nombre : ['', Validators.required],
       descripcion : ['', Validators.required],
       precio : ['', Validators.required],
-      cantidadStock : ['', Validators.required],
       idMarca : ['', Validators.required],
       idCategoria : ['', Validators.required],
-      idUbicacion : ['', Validators.required],
-      estado : ['', Validators.required],
+      idUnidadMedida : ['', Validators.required],
+      estado : ['ACTIVO'],
     });
   }
 
+  ngOnInit() {
+    this.marcaService.getMarcas().subscribe(data => {
+      this.marcas = data.data;
+      console.log('Marcas:', this.marcas);
+    });
+
+    this.categoriaService.getCategorias().subscribe(data => {
+      this.categorias = data.data;
+      console.log('Categorias:', this.categorias);
+    });
+
+    this.unidadMedidaService.getUnidadesMedida().subscribe(data => {
+      this.unidadesMedida = data.data;
+      console.log('Unidades de Medida:', this.unidadesMedida);
+    });
+  }
 
 
 guardar() {
@@ -55,11 +81,10 @@ guardar() {
       nombre: formValue.nombre,
       descripcion: formValue.descripcion,
       precio: parseFloat(formValue.precio),  // Convertir a número
-      cantidadStock: parseInt(formValue.cantidadStock, 10), // Convertir a número entero
       idMarca: parseInt(formValue.idMarca, 10),
       idCategoria: parseInt(formValue.idCategoria, 10),
-      idUbicacion: parseInt(formValue.idUbicacion, 10),
-      estado: formValue.estado,
+      idUnidadMedida: parseInt(formValue.idUnidadMedida, 10),
+      estado: 'ACTIVO',
       esEliminado: false, // Valor por defecto
       creadoPor: 1        // Valor por defecto
     };
@@ -76,5 +101,10 @@ guardar() {
     });
   }
 }
+
+onDialogClose() {
+    this.visibleChange.emit(false);
+    this.formProducto.reset();
+  }
 
 }

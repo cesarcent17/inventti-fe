@@ -25,7 +25,6 @@
                 <th style="width:10%">Categoría</th>
                 <th style="width:10%">Unidad de Medida</th>
                 <th style="width:8%">Precio</th>
-                <th style="width:7%">Estado</th>
                 <th style="width:10%">Acciones</th>
             </tr>
 
@@ -59,10 +58,7 @@
                 </td>
 
                 <td>
-                    {{ producto.precio }}
-                </td>
-                <td>
-                    <p-tag [value]="producto.estado" />
+                    ${{ producto.precio }}
                 </td>
 
                 <td>

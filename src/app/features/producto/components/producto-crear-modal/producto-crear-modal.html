@@ -1,5 +1,5 @@
 <p-dialog [(visible)]="visible" [modal]="true" [header]="'Agregar Producto'" [closable]="true"
-  [style]="{ width: '30rem' }" (onHide)="visibleChange.emit(false)">
+  [style]="{ width: '37rem' }" (onHide)="onDialogClose()">
 
   <div class="{{baseClass}}__container">
 
@@ -7,7 +7,7 @@
       <div class="{{baseClass}}__form--column">
 
         <div class="{{baseClass}}__field">
-          <label for="codigo" class="{{baseClass}}__label">Código Producto</label>
+          <label for="codigo" class="{{baseClass}}__label">Código</label>
           <input pInputText id="codigo" formControlName="codigo" />
         </div>
 
@@ -26,17 +26,47 @@
           <input pInputText id="precio" type="number" formControlName="precio" />
         </div>
 
-        <div class="{{baseClass}}__field">
+        <div class="{{baseClass}}__field {{baseClass}}__field--marca field">
+          <label>Marca</label>
+          <select formControlName="idMarca" class="p-inputtext">
+            <option value="" disabled selected>Seleccione una Marca</option>
+            <option *ngFor="let marca of marcas" [value]="marca.idMarca">
+              {{ marca.nombre }}
+            </option>
+          </select>
+        </div>
+
+        <div class="{{baseClass}}__field {{baseClass}}__field--categoria field">
+          <label>Categoria</label>
+          <select formControlName="idCategoria" class="p-inputtext">
+            <option value="" disabled selected>Seleccione una Categoría</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria.idCategoria">
+              {{ categoria.nombre }}
+            </option>
+          </select>
+        </div>
+
+        <div class="{{baseClass}}__field {{baseClass}}__field--unidad-medida field">
+          <label>Unidad de Medida</label>
+          <select formControlName="idUnidadMedida" class="p-inputtext">
+            <option value="" disabled selected>Seleccione una Unidad de Medida</option>
+            <option *ngFor="let unidad of unidadesMedida" [value]="unidad.idUnidadMedida">
+              {{ unidad.nombre }}
+            </option>
+          </select>
+        </div>
+
+        <!-- <div class="{{baseClass}}__field">
           <label for="cantidadStock" class="{{baseClass}}__label">Cantidad Stock</label>
           <input pInputText id="cantidadStock" type="number" formControlName="cantidadStock" />
-        </div>
+        </div> -->
 
-        <div class="{{baseClass}}__field">
+        <!-- <div class="{{baseClass}}__field">
           <label for="idMarca" class="{{baseClass}}__label">ID Marca</label>
           <input pInputText id="idMarca" type="number" formControlName="idMarca" />
-        </div>
+        </div> -->
 
-        <div class="{{baseClass}}__field">
+        <!-- <div class="{{baseClass}}__field">
           <label for="idCategoria" class="{{baseClass}}__label">ID Categoría</label>
           <input pInputText id="idCategoria" type="number" formControlName="idCategoria" />
         </div>
@@ -44,12 +74,12 @@
         <div class="{{baseClass}}__field">
           <label for="idUbicacion" class="{{baseClass}}__label">ID Ubicación</label>
           <input pInputText id="idUbicacion" type="number" formControlName="idUbicacion" />
-        </div>
+        </div> -->
 
-        <div class="{{baseClass}}__field">
+        <!-- <div class="{{baseClass}}__field">
           <label for="estado" class="{{baseClass}}__label">Estado</label>
           <input pInputText id="estado" formControlName="estado" />
-        </div>
+        </div> -->
 
         <div class="{{baseClass}}__button">
           <button pButton type="submit" label="Guardar" [disabled]="formProducto.invalid"></button>
