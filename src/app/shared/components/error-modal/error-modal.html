@@ -1,0 +1,29 @@
+<p-dialog [(visible)]="visible" [modal]="true" [header]="'Error'" [closable]="true"
+          [style]="{ width: '450px' }" (onHide)="onClose()">
+
+  <div class="error-modal-container">
+    <div class="error-icon">
+      <i class="pi pi-exclamation-triangle"></i>
+    </div>
+
+    <!-- Mensaje principal -->
+    <p class="error-message">{{ errorMessage }}</p>
+
+    <!-- Mostrar detalles solo si existen -->
+    <div *ngIf="errorDetails && hasDetails()" class="error-details">
+        <strong> Detalle: </strong>
+      <div *ngFor="let key of getKeys(errorDetails)">
+<!--        <strong>{{ key }}:</strong>-->
+        
+        <ul>
+          <li *ngFor="let msg of errorDetails?.[key]">{{ msg }}</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- <div class="text-center mt-3">
+      <button pButton type="button" label="Cerrar" class="p-button-danger" (click)="onClose()"></button>
+    </div> -->
+  </div>
+</p-dialog>

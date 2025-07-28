@@ -7,10 +7,11 @@ import { ButtonModule } from 'primeng/button';
 import { MarcaService } from '../../../marca/services/marca-service';
 import { CategoriaService } from '../../../categoria/services/categoria-service';
 import { UnidadMedidaService } from '../../../unidad-medida/services/unidad-medida-service';
+import { ErrorModalComponent } from '../../../../shared/components/error-modal/error-modal';
 
 @Component({
   selector: 'app-producto-editar-modal',
-  imports: [CommonModule, FormsModule, DialogModule, ButtonModule],
+  imports: [CommonModule, FormsModule, DialogModule, ButtonModule, ErrorModalComponent],
   standalone: true,
   templateUrl: './producto-editar-modal.html',
   styleUrl: './producto-editar-modal.css'
@@ -44,6 +45,10 @@ export class ProductoEditarModal {
   baseClass: string = 'producto-editar-modal';
 
   descripcion: string = '';
+
+  errorVisible: boolean = false;
+  errorMessage: string = 'Hola Maradona 2025';
+  errorDetails: Record<string, string[]> | null = null;
 
 
 
@@ -93,8 +98,10 @@ export class ProductoEditarModal {
         this.visibleChange.emit(false);
         this.onGuardar.emit();
       },
-      error: (err) => {
-        console.error('Error al actualizar ubicación', err);
+      error: (error) => {
+        this.errorMessage = error?.error?.message;
+        this.errorDetails = error?.error?.errors;
+        this.errorVisible = true;
       }
     });
   }

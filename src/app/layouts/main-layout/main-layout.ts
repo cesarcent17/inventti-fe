@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { Topbar } from '../../shared/components/topbar/topbar';
+import { ErrorModalComponent } from '../../shared/components/error-modal/error-modal';
 
 
 @Component({
